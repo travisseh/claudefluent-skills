@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stripe Signups"
+  short_description: "Help with Stripe Signups tasks"
+  default_prompt: "Use $stripe-signups to query Stripe for ClaudeFluent course signups, waitlist subscribers, session data, and customer information."
