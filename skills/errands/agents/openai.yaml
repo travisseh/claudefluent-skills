@@ -1,0 +1,4 @@
+interface:
+  display_name: "Errands"
+  short_description: "Help with Errands workflows"
+  default_prompt: "Use $errands with $dev-browser to run virtual errands such as shopping, tracking packages, placing orders, and other browser-based tasks."
