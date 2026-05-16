@@ -1,0 +1,4 @@
+interface:
+  display_name: "the user Linkedin Style"
+  short_description: "Help with the user Linkedin Style tasks"
+  default_prompt: "Use $user-linkedin-style as a compatibility wrapper, then follow $user-writing-style as the source of truth for LinkedIn voice."
