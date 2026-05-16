@@ -1,0 +1,6 @@
+interface:
+  display_name: "Claude"
+  short_description: "Ask Claude Code for a second opinion"
+  default_prompt: "Use $claude to get Claude Code's critique before we decide."
+policy:
+  allow_implicit_invocation: true
