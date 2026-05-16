@@ -1,0 +1,4 @@
+interface:
+  display_name: "Proactive Insights"
+  short_description: "Help with Proactive Insights tasks"
+  default_prompt: "Use $proactive-insights to proactively identify actionable insights from messages, financial data, and calendar events."
