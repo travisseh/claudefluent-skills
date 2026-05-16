@@ -1,0 +1,4 @@
+interface:
+  display_name: "Insights Monitor"
+  short_description: "Help with Insights Monitor tasks"
+  default_prompt: "Use $insights-monitor to automated analysis of messages and data to surface actionable items."
