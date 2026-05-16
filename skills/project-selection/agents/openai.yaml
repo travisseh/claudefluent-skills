@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Selection"
+  short_description: "Help with Project Selection tasks"
+  default_prompt: "Use $project-selection to evaluate entrepreneurial opportunities against the user's constraints (time, capital, skills, risk tolerance)."
