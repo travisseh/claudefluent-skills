@@ -1,0 +1,4 @@
+interface:
+  display_name: "Student Experience"
+  short_description: "Help with Student Experience tasks"
+  default_prompt: "Use $student-experience to orchestrate and improve the ClaudeFluent student journey end-to-end — website, purchase, onboarding, class slides, exercises, and post-class community."
