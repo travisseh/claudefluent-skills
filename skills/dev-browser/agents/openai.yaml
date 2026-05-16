@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dev Browser"
+  short_description: "Persistent browser automation via dev-browser."
+  default_prompt: "Use $dev-browser for browser automation. Prefer `dev-browser --connect` for the user's live/authenticated browser and `dev-browser --headless` for clean browser tasks. If live Chrome is too heavy or the user wants a specific account, launch a profile-scoped debug Chrome for Personal, ExampleCo, ReviewCo, or Example Agency."
