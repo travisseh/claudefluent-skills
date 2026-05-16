@@ -1,0 +1,3 @@
+display_name: ExampleCo Dashboard Stats
+short_description: Pull ExampleCo Reporting dashboard data locally.
+default_prompt: Query the ExampleCo Reporting dashboard stats locally and summarize the relevant metrics.
