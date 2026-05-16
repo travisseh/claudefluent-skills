@@ -1,0 +1,4 @@
+interface:
+  display_name: "Commit and Push"
+  short_description: "Commit scoped changes, push them, and monitor deployment."
+  default_prompt: "Commit and push only the changes we have been discussing, then monitor the Vercel or Railway deployment until it succeeds or fails."
