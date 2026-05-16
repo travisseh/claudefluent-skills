@@ -1,0 +1,4 @@
+interface:
+  display_name: "Synthetic User Feedback"
+  short_description: "Help with Synthetic User Feedback tasks"
+  default_prompt: "Use $synthetic-user-feedback to simulate realistic user feedback by having detailed personas browse a website or app, providing running commentary and a structured synthesis report."
