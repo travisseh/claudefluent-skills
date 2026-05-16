@@ -1,0 +1,4 @@
+interface:
+  display_name: "Executive Assistant"
+  short_description: "Help with Executive Assistant tasks"
+  default_prompt: "Use $executive-assistant to executive life assistant for the user Hansen — orchestrates calendar, email, Slack, iMessage, and Apple Notes across family, church, career, and side ventures to help prioritize time and stay on top of everything."
