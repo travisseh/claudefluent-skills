@@ -1,0 +1,4 @@
+interface:
+  display_name: "Imessage"
+  short_description: "Help with Imessage workflows"
+  default_prompt: "Use $imessage to read and send iMessages using custom SQLite-based tools (more reliable than MCP)."
