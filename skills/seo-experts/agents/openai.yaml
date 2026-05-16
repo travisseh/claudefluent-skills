@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Experts"
+  short_description: "Revenue-first SEO, GEO, and pSEO playbooks"
+  default_prompt: "Use $seo-experts to audit my SEO strategy and produce a focused 30-day growth plan."
