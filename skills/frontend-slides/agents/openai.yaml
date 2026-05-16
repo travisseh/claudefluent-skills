@@ -1,0 +1,4 @@
+interface:
+  display_name: "Frontend Slides"
+  short_description: "Help with Frontend Slides tasks"
+  default_prompt: "Use $frontend-slides to create stunning, animation-rich HTML presentations from scratch or by converting PowerPoint files."
