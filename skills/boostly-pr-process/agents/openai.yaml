@@ -1,0 +1,4 @@
+interface:
+  display_name: "ExampleCo PR Process"
+  short_description: "ExampleCo pull request workflow"
+  default_prompt: "Use $exampleco-pr-process to prepare or review a pull request for the ExampleCo repo."
