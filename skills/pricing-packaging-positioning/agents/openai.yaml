@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pricing Packaging Positioning"
+  short_description: "Help with Pricing Packaging Positioning tasks"
+  default_prompt: "Use $pricing-packaging-positioning to strategic pricing, packaging, and positioning advisor using frameworks from Hormozi, Dunford, Campbell, Enns, Ramanujam, and Ries & Trout."
