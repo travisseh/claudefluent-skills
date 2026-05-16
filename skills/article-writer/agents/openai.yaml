@@ -1,0 +1,4 @@
+interface:
+  display_name: "Article Writer"
+  short_description: "Help with Article Writer tasks"
+  default_prompt: "Use $article-writer to write opinionated Claude Code articles for ClaudeFluent."
