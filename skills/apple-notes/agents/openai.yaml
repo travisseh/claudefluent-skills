@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apple Notes"
+  short_description: "Help with Apple Notes tasks"
+  default_prompt: "Use $apple-notes to access Apple Notes for personal project context including goals, change log, and retrospectives."
