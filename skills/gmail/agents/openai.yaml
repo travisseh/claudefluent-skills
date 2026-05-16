@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gmail"
+  short_description: "Help with Gmail workflows"
+  default_prompt: "Use $gmail to read and send Gmail across personal, ExampleCo, and ReviewCo accounts using custom CLI tools."
