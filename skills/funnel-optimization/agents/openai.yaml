@@ -1,0 +1,4 @@
+interface:
+  display_name: "Funnel Optimization"
+  short_description: "Help with Funnel Optimization tasks"
+  default_prompt: "Use $funnel-optimization to check ClaudeFluent conversion funnel data, diagnose drop-offs, and find optimization opportunities using PostHog analytics."
