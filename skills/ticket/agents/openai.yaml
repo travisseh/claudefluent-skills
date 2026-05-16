@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ticket Starter"
+  short_description: "Start Linear tickets with repo context"
+  default_prompt: "Start work on Linear ticket CORE-123."
