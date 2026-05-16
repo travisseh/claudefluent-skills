@@ -1,0 +1,4 @@
+interface:
+  display_name: "Draw.io Diagrams"
+  short_description: "Professional draw.io diagram generation."
+  default_prompt: "Use $diagrams to create a polished draw.io diagram in mxGraphModel XML and export it to SVG, PNG, or PDF."
