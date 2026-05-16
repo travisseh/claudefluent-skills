@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Inbox Cleanup"
+  short_description: "Archive low-value unread Gmail messages"
+  default_prompt: "Use $email-inbox-cleanup with $g-workspaces to review unread Gmail and archive clearly irrelevant messages."
