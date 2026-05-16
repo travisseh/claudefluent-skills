@@ -1,0 +1,4 @@
+interface:
+  display_name: "Convex Presentation Slides"
+  short_description: "Edit and manage Convex presentation slides"
+  default_prompt: "Use $convex-presentation-slides to list, inspect, and edit presentation slides via npx convex run --prod."
