@@ -1,0 +1,4 @@
+interface:
+  display_name: "Chrome Live Session"
+  short_description: "Broad live Chrome access policy."
+  default_prompt: "Use the live Chrome session broadly through $dev-browser; confirm before irreversible side effects."
