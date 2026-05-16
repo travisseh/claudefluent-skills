@@ -1,0 +1,4 @@
+interface:
+  display_name: "Marketing"
+  short_description: "Help with Marketing tasks"
+  default_prompt: "Use $marketing to marketing brain for ClaudeFluent — routes to the right skill, plans multi-step campaigns, and answers 'what should I do next?' for marketing."
