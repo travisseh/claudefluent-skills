@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slide Style"
+  short_description: "Help with Slide Style tasks"
+  default_prompt: "Use $slide-style to writing style guide for ClaudeFluent presentation slides. Reference this skill whenever writing or reviewing slide content to ensure consistent voice, structure, and formatting. Use alongside cc-slides for any slide creation or modification."
