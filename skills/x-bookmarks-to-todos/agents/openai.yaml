@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Bookmarks to Todos"
+  short_description: "Help with X Bookmarks to Todos tasks"
+  default_prompt: "Use $x-bookmarks-to-todos to extract X/Twitter bookmarks, read linked content, and create actionable todo lists with summaries. Incremental by default — only processes new bookmarks since last extraction."
