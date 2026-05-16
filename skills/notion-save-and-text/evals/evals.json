@@ -1,0 +1,34 @@
+{
+  "skill_name": "notion-save-and-text",
+  "evals": [
+    {
+      "id": "explicit-save-and-text",
+      "prompt": "Save this to Notion and text me the result.",
+      "expected_output": "The agent saves the current substantial output to the AI Output Library, texts the user the Notion URL, and confirms with the URL.",
+      "assertions": [
+        "Uses the local Notion CLI rather than Notion MCP.",
+        "Uses the local iMessage tool to text the user the URL.",
+        "Final response includes the Notion URL and says it was texted."
+      ]
+    },
+    {
+      "id": "slash-command-style",
+      "prompt": "ok save this to /notion-save-and-text",
+      "expected_output": "The agent treats the request as save-plus-text and performs both actions.",
+      "assertions": [
+        "Identifies the most recent substantial output as the content to save.",
+        "Chooses reasonable Notion metadata from the content.",
+        "Does not create a Life Backlog task."
+      ]
+    },
+    {
+      "id": "ambiguous-target",
+      "prompt": "save that to notion and text me",
+      "expected_output": "If there are multiple plausible outputs, the agent asks what content to save before taking side effects.",
+      "assertions": [
+        "Does not save ambiguous content without clarification.",
+        "Keeps the clarification concise."
+      ]
+    }
+  ]
+}
