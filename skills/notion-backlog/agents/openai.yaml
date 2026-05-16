@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notion Backlog"
+  short_description: "Help with Notion Backlog tasks"
+  default_prompt: "use $notion-backlog when this task matches that skill"
