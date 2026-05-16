@@ -1,0 +1,4 @@
+interface:
+  display_name: "Domain Availability"
+  short_description: "Help with Domain Availability tasks"
+  default_prompt: "Use $domain-availability to check domain name availability using Namecheap via Playwright."
