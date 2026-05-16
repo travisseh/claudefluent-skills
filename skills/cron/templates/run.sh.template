@@ -1,0 +1,42 @@
+#!/bin/bash
+# __CRON_NAME__ — <one-line description>
+
+set -u
+
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+PROJECT_DIR="__PROJECT_DIR__"
+DATE_TAG="$(date +%Y-%m-%d)"
+LOG_FILE="/tmp/__CRON_NAME__.log"
+RAW_OUT="/tmp/__CRON_NAME__-$DATE_TAG-raw.txt"
+DM_BODY="/tmp/__CRON_NAME__-$DATE_TAG-dm.txt"
+
+export PATH="/opt/homebrew/bin:~/.nvm/versions/node/v22.17.0/bin:/usr/local/bin:/usr/bin:/bin:$PATH"
+export HOME="~"
+unset CLAUDECODE 2>/dev/null || true
+
+echo "$(date): === starting __CRON_NAME__ ===" >> "$LOG_FILE"
+
+cd "$PROJECT_DIR"
+
+PROMPT='__PROMPT__
+
+IMPORTANT: Do NOT ask questions or wait for input. Output the result and exit.'
+
+claude -p "$PROMPT" \
+  --dangerously-skip-permissions \
+  --max-turns __MAX_TURNS__ \
+  > "$RAW_OUT" 2>&1 || true
+
+if [ -s "$RAW_OUT" ]; then
+  cp "$RAW_OUT" "$DM_BODY"
+else
+  echo ":warning: __CRON_NAME__ produced no output on $DATE_TAG. Check $LOG_FILE." > "$DM_BODY"
+fi
+
+# === DELIVERY === (replace with one block from the cron skill)
+__DELIVERY_BLOCK__
+
+# Cleanup
+find /tmp -name "__CRON_NAME__-*.txt" -mtime +14 -delete 2>/dev/null || true
+
+echo "$(date): === done ===" >> "$LOG_FILE"
