@@ -25,7 +25,7 @@ Slash commands and app mentions are optional compatibility surfaces. Add them on
 
 Before touching Slack settings, browser profiles, or secrets, ask which setup mode to use unless the user already made it explicit:
 
-- **Share-safe mode**: generate the manifest and concise human steps. The user creates tokens, installs the app, and pastes env vars themselves. Use this by default when the skill may be shared, demoed, or reused outside your own machine.
+- **Share-safe mode**: generate the manifest and concise human steps. The user creates tokens, installs the app, and pastes env vars themselves. Use this by default when the skill may be shared, demoed, or reused outside the user's machine.
 - **Aggressive local mode**: use Browser/Computer Use to create tokens, reveal/capture secrets, install the app, write env vars into a gitignored local `.env`, restart the agent, and test it. Only use this when the user explicitly approves local automation and secret handling.
 
 Phrase the question briefly, for example: "Do you want share-safe mode, where I give you the manifest and steps, or aggressive local mode, where I use your browser to create/install the app and write the env vars locally?"
@@ -45,7 +45,7 @@ Phrase the question briefly, for example: "Do you want share-safe mode, where I 
 Run from the skill directory or use the absolute path:
 
 ```bash
-python3 scripts/generate_manifest.py \
+python3 ~/.codex/skills/slack-app/scripts/generate_manifest.py \
   --name "ClaudeFluent Agent" \
   --description "Ask ClaudeFluent operational questions from Slack." \
   --agent-description "Ask ClaudeFluent operational questions, including status, sessions, customers, emails, and what to do next." \
@@ -57,7 +57,7 @@ python3 scripts/generate_manifest.py \
 For a generic internal agent:
 
 ```bash
-python3 scripts/generate_manifest.py \
+python3 ~/.codex/skills/slack-app/scripts/generate_manifest.py \
   --name "Team Agent" \
   --description "Ask operational questions from Slack." \
   --agent-description "Ask team operational questions and get workspace-aware answers." \
@@ -92,7 +92,7 @@ Only use this section in aggressive local mode. Use Computer Use against the cor
 
 Recommended flow:
 
-1. Open the correct browser profile for the target Slack workspace and go to the Slack app URL.
+1. Open the workspace-specific Chrome profile and Slack app URL. For the user's Example Agency workspace, prefer the Chrome profile whose account is `user@example.com`.
 2. Create the app from the agent-first manifest at [Slack API Apps](https://api.slack.com/apps).
 3. In Slack app settings, verify the app is the intended app and workspace. The team ID appears in app settings URLs like `app.slack.com/app-settings/<TEAM_ID>/<APP_ID>/...`.
 4. Basic Information -> App Credentials -> click **Show** beside **Signing Secret** and capture `SLACK_SIGNING_SECRET`.
