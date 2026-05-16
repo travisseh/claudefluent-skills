@@ -1,0 +1,4 @@
+interface:
+  display_name: "Audit System Lag"
+  short_description: "Help with Audit System Lag tasks"
+  default_prompt: "Use $audit-system-lag to audit system resources - find memory hogs, zombie processes, and fix lag."
