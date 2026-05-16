@@ -1,0 +1,4 @@
+interface:
+  display_name: "Finance Review"
+  short_description: "Review Chase card spend and household budget patterns"
+  default_prompt: "Use $personal-finance-review to pull the latest Chase spend data, reclassify Walmart and Instacart as groceries, and give me a shareable report with category examples and places to cut."
