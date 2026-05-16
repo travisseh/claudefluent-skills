@@ -1,0 +1,4 @@
+interface:
+  display_name: "Linkedin"
+  short_description: "Help with Linkedin workflows"
+  default_prompt: "Use $linkedin with $dev-browser to check and respond to LinkedIn messages and notifications."
