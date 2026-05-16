@@ -1,0 +1,4 @@
+interface:
+  display_name: "Slack"
+  short_description: "Help with Slack workflows"
+  default_prompt: "Use $slack to read and send Slack messages across ExampleCo, ReviewCo, and Example Agency workspaces using custom tools."
