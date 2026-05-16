@@ -1,0 +1,4 @@
+interface:
+  display_name: "Front End"
+  short_description: "Help with Front End tasks"
+  default_prompt: "Use $front-end to frontend design and development guide emphasizing distinctive, non-generic UI."
