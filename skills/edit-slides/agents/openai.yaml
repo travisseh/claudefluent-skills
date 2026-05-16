@@ -1,0 +1,4 @@
+interface:
+  display_name: "Edit Slides"
+  short_description: "Help with Edit Slides tasks"
+  default_prompt: "Use $edit-slides to inspect and edit presentation slides through npx convex run --prod."
