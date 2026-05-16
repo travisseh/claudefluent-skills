@@ -1,0 +1,108 @@
+default_dirs:
+  skills:
+    - default: .claude/skills/
+    - global: ~/.claude/skills/
+  agents:
+    - default: .claude/agents/
+    - global: ~/.claude/agents/
+  prompts:
+    - default: .claude/commands/
+    - global: ~/.claude/commands/
+  hooks:
+    - default: .claude/hooks/
+
+library:
+  skills:
+    - name: interview-me
+      description: Structured interview skill for gathering requirements
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/skills/interview-me/SKILL.md
+    - name: research
+      description: Research skill for investigating topics
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/skills/research/SKILL.md
+    - name: critical-thinking
+      description: Analytical frameworks and mental models — evaluate decisions, critique plans, diagnose problems, compare options
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/skills/critical-thinking/SKILL.md
+    - name: systems-thinking
+      description: Structured system design reasoning — trade-offs, access patterns, component selection, architecture reviews
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/skills/systems-thinking/SKILL.md
+    - name: ids
+      description: Root cause analysis — 5 whys, why chains, identify-discuss-solve for problems that recur or resist obvious fixes
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/skills/ids/SKILL.md
+    - name: ask-elephant
+      description: AskElephant meeting intelligence — search engagements, transcripts, companies, contacts, tags, and CRM associations via REST API
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/ask-elephant/SKILL.md
+      requires: [bin:bun, env:ASK_ELEPHANT_API_KEY]
+    - name: hubspot
+      description: HubSpot CRM queries, schema exploration, and batch extraction across 13 object types — Bun/TypeScript CLI
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/hubspot/SKILL.md
+      requires: [bin:bun, env:HUBSPOT_SERVICE_KEY]
+    - name: quo
+      description: OpenPhone calls, messages, contacts, and transcripts — interactive queries and batch extraction via Bun CLI
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/quo/SKILL.md
+      requires: [bin:bun, env:QUO_API_KEY]
+    - name: stripe
+      description: Stripe REST API toolkit — products, prices, subscriptions, customers, invoices, charges, payment intents
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/stripe/SKILL.md
+      requires: [bin:curl, bin:jq, env:STRIPE_TEST_KEY]
+    - name: metabase
+      description: Metabase API toolkit — SQL queries, databases, tables, dashboards, questions, collections
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/metabase/SKILL.md
+      requires: [bin:curl, bin:jq, env:METABASE_URL, env:METABASE_API_KEY]
+    - name: slack
+      description: Send, read, search, delete messages and share files in Slack — privacy-aware cross-channel information handling
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/skills/slack/SKILL.md
+      requires: [bin:curl, bin:jq, env:SLACK_USER_OAUTH_TOKEN]
+    - name: process-billing-failures
+      description: CSM failed payment billing automation — Stripe discovery, retry, HubSpot CSM assignment, Slack reporting
+      source: https://github.com/ExampleCo/aos-lib-jobs/blob/main/skills/process-billing-failures/SKILL.md
+      requires: [bin:bun, bin:jq, bin:curl, env:STRIPE_TEST_KEY, env:HUBSPOT_SERVICE_KEY, env:METABASE_URL, env:METABASE_API_KEY, skill:stripe, skill:metabase, skill:hubspot]
+  agents:
+    - name: hubspot-expert
+      description: HubSpot CRM expert agent — search, explore, and extract CRM data via hubspot skill
+      source: https://github.com/ExampleCo/aos-lib-connectors/blob/main/agents/hubspot-expert.md
+      requires: [skill:hubspot]
+  plugins:
+    - name: plugin-dev
+      description: Plugin development tools for Claude Code
+      source: plugin-dev@claude-plugins-official
+    - name: skill-creator
+      description: Skill creation and optimization tools
+      source: skill-creator@claude-plugins-official
+    - name: superpowers
+      description: Obra superpowers plugin
+      source: superpowers@obra
+      marketplace: obra/superpowers
+  mcp_servers:
+    - name: linear
+      description: Linear issue tracking
+      type: http
+      url: https://mcp.linear.app/mcp
+  prompts: []
+  hooks:
+    - name: enforce-output-convention
+      description: Blocks writes outside the configured output path
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/hooks/enforce-output-convention.sh
+      event: PreToolUse
+      matcher: "Write|Edit"
+      requires: [bin:jq]
+    - name: stop-notify
+      description: Plays system sound when Claude awaits input
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/hooks/stop-notify.sh
+      event: Stop
+      requires: [bin:osascript, bin:afplay]
+    - name: permission-notify
+      description: Plays sound for permission requests
+      source: https://github.com/mikeyamadeo/aos-lib-core/blob/main/hooks/permission-notify.sh
+      event: Notification
+      requires: [bin:osascript, bin:afplay]
+
+collections:
+  workflow: [interview-me, research, critical-thinking, systems-thinking, ids]
+  quality-of-life: [stop-notify, permission-notify, enforce-output-convention]
+  palantir: [ask-elephant, hubspot, hubspot-expert, quo]
+  connectors: [slack, stripe, metabase]
+  finance: [process-billing-failures, stripe, metabase, hubspot]
+
+teams:
+  finance:
+    collections: [finance]
