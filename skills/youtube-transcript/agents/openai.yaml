@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Transcript"
+  short_description: "Pull transcripts from YouTube videos"
+  default_prompt: "Use $youtube-transcript to pull a clean transcript from this YouTube URL and tell me whether it came from captions, subtitle fallback, or ASR."
