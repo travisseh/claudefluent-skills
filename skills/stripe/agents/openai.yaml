@@ -1,0 +1,4 @@
+interface:
+  display_name: "Stripe"
+  short_description: "Help with Stripe workflows"
+  default_prompt: "Use $stripe to query Stripe for ClaudeFluent course signups, waitlist subscribers, session data, and customer information."
