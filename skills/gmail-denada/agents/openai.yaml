@@ -1,0 +1,4 @@
+interface:
+  display_name: "Gmail Example Agency"
+  short_description: "Help with Gmail Example Agency tasks"
+  default_prompt: "Use $gmail-example-agency to send and read emails from user@example.com using Gmail API with service account authentication."
