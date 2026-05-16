@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Tree Generator"
+  short_description: "Help with Skill Tree Generator tasks"
+  default_prompt: "Use $skill-tree-generator to generate interactive skill tree visualizations as JSON data files."
