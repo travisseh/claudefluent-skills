@@ -1,0 +1,4 @@
+interface:
+  display_name: "GSC Submit"
+  short_description: "Help with GSC Submit tasks"
+  default_prompt: "Use $gsc-submit to submit new guides or pages to Google Search Console for indexing."
