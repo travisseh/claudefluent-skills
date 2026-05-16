@@ -9,7 +9,7 @@ Use the local Google tools, not app connectors, when the target account matters.
 
 ## Accounts
 
-- `personal` - `travisseh@gmail.com`
+- `personal` - `user@example.com`
 - `exampleco` - `user@example.com`
 - `example-workspace` - `user@example.com`
 - `gmr` - `user@example.com`

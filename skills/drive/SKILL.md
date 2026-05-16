@@ -15,7 +15,7 @@ Prefer this helper over the Google Drive app connector when the target account m
 
 ## Accounts
 
-- `personal` - `travisseh@gmail.com`
+- `personal` - `user@example.com`
 - `exampleco` - `user@example.com`
 - `example-workspace` - `user@example.com`
 - `gmr` - `user@example.com`
