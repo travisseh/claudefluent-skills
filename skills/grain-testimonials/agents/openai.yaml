@@ -1,0 +1,4 @@
+interface:
+  display_name: "Grain Testimonials"
+  short_description: "Help with Grain Testimonials tasks"
+  default_prompt: "use $grain-testimonials when this task matches that skill"
