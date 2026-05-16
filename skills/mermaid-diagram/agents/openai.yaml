@@ -1,0 +1,4 @@
+interface:
+  display_name: "Mermaid Diagram"
+  short_description: "Help with Mermaid Diagram tasks"
+  default_prompt: "Use $mermaid-diagram to generate beautiful Mermaid diagrams rendered as SVG or ASCII art using the beautiful-mermaid library."
