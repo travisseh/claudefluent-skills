@@ -1,0 +1,4 @@
+interface:
+  display_name: "Notion Life Backlog Sync"
+  short_description: "Sync Notion Life Backlog tasks"
+  default_prompt: "Use this skill when a task is finished or materially advanced and you should ask once whether the user wants the Notion Life Backlog updated, then update the matching Notion task if they say yes."
