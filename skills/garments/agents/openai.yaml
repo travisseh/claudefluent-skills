@@ -1,0 +1,4 @@
+interface:
+  display_name: "Garments"
+  short_description: "Help with Garments workflows"
+  default_prompt: "Use $garments with $dev-browser to order men's garments from store.churchofjesuschrist.org."
