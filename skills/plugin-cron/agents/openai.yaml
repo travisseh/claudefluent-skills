@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plugin Cron"
+  short_description: "Help with Plugin Cron tasks"
+  default_prompt: "Use $plugin-cron to create automated cron jobs that live inside Claude Code plugins."
