@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check Email"
+  short_description: "Help with Check Email tasks"
+  default_prompt: "Use $check-email to check unread emails from ReviewCo accounts (user@example.com)."
