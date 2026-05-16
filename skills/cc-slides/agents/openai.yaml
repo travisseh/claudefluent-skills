@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cc Slides"
+  short_description: "Help with Cc Slides tasks"
+  default_prompt: "Use $cc-slides to manage ClaudeFluent course presentation slides stored in Convex — add, modify, delete, and reorder slides."
