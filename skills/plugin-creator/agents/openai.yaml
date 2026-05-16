@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plugin Creator"
+  short_description: "Help with Plugin Creator tasks"
+  default_prompt: "Use $plugin-creator to create Claude Code plugins with correct structure, marketplace setup, and install flow. Wraps plugin-dev with hard-won knowledge about local plugin distribution."
