@@ -1,0 +1,4 @@
+interface:
+  display_name: "Guide Writer"
+  short_description: "Help with Guide Writer tasks"
+  default_prompt: "Use $guide-writer to create evergreen Claude Code guides for ClaudeFluent."
