@@ -1,0 +1,4 @@
+interface:
+  display_name: "Behavior Design"
+  short_description: "Help with Behavior Design tasks"
+  default_prompt: "Use $behavior-design to behavior design consultant for reviewing landing pages, PRDs, marketing assets, and product ideas."
