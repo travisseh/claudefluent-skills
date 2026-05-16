@@ -1,0 +1,4 @@
+interface:
+  display_name: "Meta Ads"
+  short_description: "Query and analyze ExampleCo Meta Ads performance and creatives."
+  default_prompt: "Analyze ExampleCo Meta Ads performance, creatives, and messaging using the Meta Marketing API."
