@@ -1,0 +1,4 @@
+interface:
+  display_name: "Architect"
+  short_description: "Help with Architect tasks"
+  default_prompt: "Use $architect to software architecture and system design advisor."
