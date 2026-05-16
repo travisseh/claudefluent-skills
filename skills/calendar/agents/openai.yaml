@@ -1,0 +1,4 @@
+interface:
+  display_name: "Calendar"
+  short_description: "Help with Google Calendar workflows"
+  default_prompt: "Use $calendar to read and manage Google Calendar across personal, ExampleCo, Example Agency, and ReviewCo accounts using the local calendar CLI."
