@@ -13,35 +13,35 @@ This skill is a fast orientation layer for ClaudeFluent work. Its job is to get 
 
 ## Canonical Paths
 
-- Repo root: `~/Programming/personal-master/personal/claude_course`
-- Website app: `~/Programming/personal-master/personal/claude_course/website`
-- Main landing page: `~/Programming/personal-master/personal/claude_course/website/app/v3/page.tsx`
-- V3 homepage content: `~/Programming/personal-master/personal/claude_course/website/app/v3/HomeContentV3.tsx`
-- Sessions config: `~/Programming/personal-master/personal/claude_course/website/lib/sessions.ts`
-- Admin page: `~/Programming/personal-master/personal/claude_course/website/app/admin/page.tsx`
-- Admin participants UI: `~/Programming/personal-master/personal/claude_course/website/app/admin/ParticipantsView.tsx`
-- Admin shared types: `~/Programming/personal-master/personal/claude_course/website/app/admin/types.ts`
-- Convex schema: `~/Programming/personal-master/personal/claude_course/website/convex/schema.ts`
-- Convex participants functions: `~/Programming/personal-master/personal/claude_course/website/convex/participants.ts`
-- Onboarding flow: `~/Programming/personal-master/personal/claude_course/website/app/onboarding/[token]/`
-- Success page: `~/Programming/personal-master/personal/claude_course/website/app/success/page.tsx`
-- Guides registry: `~/Programming/personal-master/personal/claude_course/website/lib/guides/index.ts`
-- Guide content: `~/Programming/personal-master/personal/claude_course/website/lib/guides/content/`
-- Blog registry: `~/Programming/personal-master/personal/claude_course/website/lib/blog/index.ts`
-- Blog content: `~/Programming/personal-master/personal/claude_course/website/lib/blog/content/`
-- Local marketing-brain state: `~/Programming/personal-master/personal/claude_course/.claude/plugins/marketing-brain/state/`
-- Installed marketing-brain plugin: `~/.codex/plugins/cache/personal-local/marketing-brain/1.4.0/`
-- Installed student-experience plugin: `~/.codex/plugins/cache/personal-local/student-experience/0.2.0/`
+- Repo root: `/Users/you/Programming/personal-master/personal/claude_course`
+- Website app: `/Users/you/Programming/personal-master/personal/claude_course/website`
+- Main landing page: `/Users/you/Programming/personal-master/personal/claude_course/website/app/v3/page.tsx`
+- V3 homepage content: `/Users/you/Programming/personal-master/personal/claude_course/website/app/v3/HomeContentV3.tsx`
+- Sessions config: `/Users/you/Programming/personal-master/personal/claude_course/website/lib/sessions.ts`
+- Admin page: `/Users/you/Programming/personal-master/personal/claude_course/website/app/admin/page.tsx`
+- Admin participants UI: `/Users/you/Programming/personal-master/personal/claude_course/website/app/admin/ParticipantsView.tsx`
+- Admin shared types: `/Users/you/Programming/personal-master/personal/claude_course/website/app/admin/types.ts`
+- Convex schema: `/Users/you/Programming/personal-master/personal/claude_course/website/convex/schema.ts`
+- Convex participants functions: `/Users/you/Programming/personal-master/personal/claude_course/website/convex/participants.ts`
+- Onboarding flow: `/Users/you/Programming/personal-master/personal/claude_course/website/app/onboarding/[token]/`
+- Success page: `/Users/you/Programming/personal-master/personal/claude_course/website/app/success/page.tsx`
+- Guides registry: `/Users/you/Programming/personal-master/personal/claude_course/website/lib/guides/index.ts`
+- Guide content: `/Users/you/Programming/personal-master/personal/claude_course/website/lib/guides/content/`
+- Blog registry: `/Users/you/Programming/personal-master/personal/claude_course/website/lib/blog/index.ts`
+- Blog content: `/Users/you/Programming/personal-master/personal/claude_course/website/lib/blog/content/`
+- Local marketing-brain state: `/Users/you/Programming/personal-master/personal/claude_course/.claude/plugins/marketing-brain/state/`
+- Installed marketing-brain plugin: `/Users/you/.codex/plugins/cache/personal-local/marketing-brain/1.4.0/`
+- Installed student-experience plugin: `/Users/you/.codex/plugins/cache/personal-local/student-experience/0.2.0/`
 
 ## First Moves
 
-1. `cd ~/Programming/personal-master/personal/claude_course`
+1. `cd /Users/you/Programming/personal-master/personal/claude_course`
 2. Check `git status --short` at repo root before editing.
-3. If touching website code, work from `~/Programming/personal-master/personal/claude_course/website`.
+3. If touching website code, work from `/Users/you/Programming/personal-master/personal/claude_course/website`.
 4. Prefer `rg` and `rg --files`; avoid scanning `node_modules`.
 5. Before UI edits, check for local guidance at:
-   - `~/Programming/personal-master/personal/claude_course/.claude/skills/`
-   - `~/Programming/personal-master/personal/claude_course/website/.claude/skills/`
+   - `/Users/you/Programming/personal-master/personal/claude_course/.claude/skills/`
+   - `/Users/you/Programming/personal-master/personal/claude_course/website/.claude/skills/`
 
 ## Routing Rules
 
@@ -49,7 +49,7 @@ This skill is a fast orientation layer for ClaudeFluent work. Its job is to get 
 
 Assume the user means the ClaudeFluent Next.js website.
 
-- Primary cwd: `~/Programming/personal-master/personal/claude_course/website`
+- Primary cwd: `/Users/you/Programming/personal-master/personal/claude_course/website`
 - Read first: `package.json`, relevant `app/**/page.tsx`, relevant `lib/**`, and local `.claude/skills` if present.
 - Common targets:
   - Homepage/current main marketing surface: `app/v3/page.tsx`, `app/v3/HomeContentV3.tsx`
@@ -81,8 +81,8 @@ Assume this means the ClaudeFluent admin participants table/workflow.
 
 There are two relevant places:
 
-- Durable ClaudeFluent marketing state in repo: `~/Programming/personal-master/personal/claude_course/.claude/plugins/marketing-brain/state/`
-- Installed plugin source/cache: `~/.codex/plugins/cache/personal-local/marketing-brain/1.4.0/`
+- Durable ClaudeFluent marketing state in repo: `/Users/you/Programming/personal-master/personal/claude_course/.claude/plugins/marketing-brain/state/`
+- Installed plugin source/cache: `/Users/you/.codex/plugins/cache/personal-local/marketing-brain/1.4.0/`
 
 When the ask is strategy, planning, or memory/state updates, read the repo state first:
 
@@ -104,7 +104,7 @@ If modifying an installed plugin cache, call that out in the final response beca
 
 Installed plugin path:
 
-- `~/.codex/plugins/cache/personal-local/student-experience/0.2.0/`
+- `/Users/you/.codex/plugins/cache/personal-local/student-experience/0.2.0/`
 
 Read first:
 
@@ -127,7 +127,7 @@ For class slides or course experience changes, also consider the standalone skil
 
 ## Commands
 
-Run from `~/Programming/personal-master/personal/claude_course/website` unless stated otherwise.
+Run from `/Users/you/Programming/personal-master/personal/claude_course/website` unless stated otherwise.
 
 - Install deps only if needed: `npm install`
 - Dev server: `npm run dev -- --port <random 3001-3999>`
