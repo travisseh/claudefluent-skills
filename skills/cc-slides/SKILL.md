@@ -2,7 +2,7 @@
 name: cc-slides
 description: >
   Manage ClaudeFluent course presentation slides stored in Convex — add, modify, delete, and reorder slides.
-  Use this skill whenever the user asks to add slides to a presentation, update slide content, remove slides,
+  Use this skill whenever Travisse asks to add slides to a presentation, update slide content, remove slides,
   add a new topic to the deck, or manage the ClaudeFluent course slides in any way. Also trigger when he mentions
   "presentation", "slides", "deck", "add a slide about", "update the slide on", or references a specific
   presentation by name or URL (e.g., "Claude Class - March 7"). When adding slides about a new topic, always
@@ -13,7 +13,7 @@ description: >
 
 ## Quick Reference
 
-- **Working directory:** `~/Programming/personal-master/personal/claude_course/website`
+- **Working directory:** `/Users/you/Programming/personal-master/personal/claude_course/website`
 - **Production Convex URL:** `https://polite-toad-76.convex.cloud`
 - **Convex API imports:** `convex/browser` for `ConvexHttpClient`, `../convex/_generated/api` for `api`, `../convex/_generated/dataModel` for `Id`
 - **Slide table:** `slidesV3` with fields: `order`, `slideId`, `contentJson` (Tiptap JSON), `contentHtml`, `presentationId`, `sideImageId`
@@ -148,7 +148,7 @@ await client.mutation(api.slidesV3.deleteSlide, {
 
 ## Looking Up Participant Data (for personalized slides)
 
-When the user references a student by name, query their onboarding data to personalize slide content:
+When Travisse references a student by name, query their onboarding data to personalize slide content:
 
 ```typescript
 // Get all participants and find by name
