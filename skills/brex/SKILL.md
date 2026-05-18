@@ -1,17 +1,17 @@
 ---
 name: brex
-description: "Access Example Agency Brex financial data through the Brex API. Use this skill whenever the user asks about Example Agency Brex, Brex transactions, Brex expenses, Brex balances, Brex accounts, Brex vendors, Brex payments, company card spend, cash movement, receipts, statements, spend limits, or money flowing through Example Agency."
+description: "Access Denada Brex financial data through the Brex API. Use this skill whenever the user asks about Denada Brex, Brex transactions, Brex expenses, Brex balances, Brex accounts, Brex vendors, Brex payments, company card spend, cash movement, receipts, statements, spend limits, or money flowing through Denada."
 ---
 
-# Brex - Example Agency
+# Brex - Denada
 
-Use this skill to query Example Agency Brex data.
+Use this skill to query Denada Brex data.
 
 ## Security
 
 - The Brex API token is stored in macOS Keychain, not in this skill or any repo.
 - Keychain service: `codex-brex-example-agency-api-key`
-- Keychain account: `user`
+- Keychain account: `travisse`
 - Never print the raw token.
 - Default to read-only operations.
 - For write or money-moving operations, explain the action and ask for explicit confirmation first. This includes creating payments, updating vendors, changing spend limits, locking cards, creating cards, uploading receipts, or modifying expenses.
@@ -22,7 +22,7 @@ Use this skill to query Example Agency Brex data.
 Use this shell snippet when making API calls:
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 ```
 
 Then call Brex with:
@@ -48,7 +48,7 @@ curl -sS "https://api.brex.com/v1/expenses?limit=100" \
 ### List Expenses
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 curl -sS "https://api.brex.com/v1/expenses?limit=100" \
   -H "Authorization: Bearer ${BREX_TOKEN}" \
   -H "Accept: application/json"
@@ -57,7 +57,7 @@ curl -sS "https://api.brex.com/v1/expenses?limit=100" \
 ### Get One Expense
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 curl -sS "https://api.brex.com/v1/expenses/{expense_id}" \
   -H "Authorization: Bearer ${BREX_TOKEN}" \
   -H "Accept: application/json"
@@ -68,7 +68,7 @@ curl -sS "https://api.brex.com/v1/expenses/{expense_id}" \
 The Transactions API supports pagination with `cursor` and `limit`.
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 curl -sS "https://api.brex.com/v2/transactions/card/primary?limit=100" \
   -H "Authorization: Bearer ${BREX_TOKEN}" \
   -H "Accept: application/json"
@@ -79,7 +79,7 @@ curl -sS "https://api.brex.com/v2/transactions/card/primary?limit=100" \
 Use this when asked for recent vendors, company card spend, SaaS spend, or "what are we spending on?" Brex may reject date query params on this endpoint, so page recent card transactions and filter locally by `posted_at_date`. This intentionally excludes card payments/credits and counts only `PURCHASE` rows.
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 CUTOFF="$(date -u -v-30d '+%Y-%m-%d')"
 url="https://api.brex.com/v2/transactions/card/primary?limit=100"
 
@@ -137,7 +137,7 @@ If the user asks for "last N days", replace `-v-30d` with the requested range, f
 ### List Accounts
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 curl -sS "https://api.brex.com/v2/accounts/cash" \
   -H "Authorization: Bearer ${BREX_TOKEN}" \
   -H "Accept: application/json"
@@ -148,7 +148,7 @@ curl -sS "https://api.brex.com/v2/accounts/cash" \
 Brex list endpoints commonly return a `next_cursor`. Keep fetching while it is present.
 
 ```bash
-BREX_TOKEN="$(security find-generic-password -a user -s codex-brex-example-agency-api-key -w)"
+BREX_TOKEN="$(security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w)"
 url="https://api.brex.com/v1/expenses?limit=100"
 
 while [ -n "$url" ]; do
@@ -179,5 +179,5 @@ done
 To verify the token exists without exposing it:
 
 ```bash
-security find-generic-password -a user -s codex-brex-example-agency-api-key -w >/dev/null && echo "Brex token found"
+security find-generic-password -a travisse -s codex-brex-example-agency-api-key -w >/dev/null && echo "Brex token found"
 ```
