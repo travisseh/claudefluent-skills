@@ -1,38 +1,38 @@
 ---
-name: exampleco-dashboard-stats
-description: Query the same ExampleCo Reporting dashboard stats locally from the exampleco-reporting repo. Use when the user asks for Product dashboard stats, Campaigns dashboard stats, customer journey readout data, sales/SDR/CSM/activation transcript dashboard stats, marketing Meta Ads stats, SEO/product funnel stats, or wants to inspect dashboard data without using the browser.
+name: boostly-dashboard-stats
+description: Query the same Example Company Reporting dashboard stats locally from the boostly-reporting repo. Use when the user asks for Product dashboard stats, Campaigns dashboard stats, customer journey readout data, sales/SDR/CSM/activation transcript dashboard stats, marketing Meta Ads stats, SEO/product funnel stats, or wants to inspect dashboard data without using the browser.
 ---
 
-# ExampleCo Dashboard Stats
+# Example Company Dashboard Stats
 
-Use this skill to pull dashboard data locally from `~/Programming/exampleco-reporting` using the same data-loading functions the dashboard uses.
+Use this skill to pull dashboard data locally from `/Users/you/Programming/boostly-reporting` using the same data-loading functions the dashboard uses.
 
 ## Quick Command
 
 Run from any directory:
 
 ```bash
-cd ~/Programming/exampleco-reporting/apps/dashboard
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section all --format summary
+cd /Users/you/Programming/boostly-reporting/apps/dashboard
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section all --format summary
 ```
 
 Useful variants:
 
 ```bash
 # Product dashboard only, JSON output
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section product --format json
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section product --format json
 
 # Campaigns dashboard, default last 7 days
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --format summary
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --format summary
 
 # Campaigns dashboard for a custom range
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --start-date 2026-05-01 --end-date 2026-05-07 --format json
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --start-date 2026-05-01 --end-date 2026-05-07 --format json
 
 # Save full JSON for local inspection
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section all --format json --out /tmp/exampleco-dashboard-stats.json
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section all --format json --out /tmp/boostly-dashboard-stats.json
 
 # Force the primary database only when you explicitly need it
-npx tsx ~/.codex/skills/exampleco-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --use-primary
+npx tsx /Users/you/.codex/skills/boostly-dashboard-stats/scripts/dashboard-stats.ts --section campaigns --use-primary
 ```
 
 ## What It Pulls

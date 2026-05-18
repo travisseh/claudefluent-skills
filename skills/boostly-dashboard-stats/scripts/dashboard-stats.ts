@@ -20,7 +20,7 @@ type CliOptions = {
   out?: string
 }
 
-const DASHBOARD_DIR = '~/Programming/exampleco-reporting/apps/dashboard'
+const DASHBOARD_DIR = '/Users/you/Programming/boostly-reporting/apps/dashboard'
 const READONLY_DATABASE_ENV_KEYS = [
   'BOOSTLY_REPORTING_READONLY_DATABASE_URL',
   'READONLY_DATABASE_URL',
