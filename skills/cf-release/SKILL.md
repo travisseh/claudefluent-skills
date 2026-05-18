@@ -17,8 +17,8 @@ or could affect production users/data.
 
 Canonical paths:
 
-- Repo: `~/Programming/personal-master/personal/claude_course`
-- Website: `~/Programming/personal-master/personal/claude_course/website`
+- Repo: `/Users/you/Programming/personal-master/personal/claude_course`
+- Website: `/Users/you/Programming/personal-master/personal/claude_course/website`
 - Vercel project: linked from `website/.vercel/project.json`
 - Production Convex URL: usually `https://polite-toad-76.convex.cloud`
 
