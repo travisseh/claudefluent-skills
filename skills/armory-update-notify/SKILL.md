@@ -1,11 +1,11 @@
 ---
 name: armory-update-notify
-description: Notify Slack channels after pushing changes to the ExampleCo Armory. Use when changes have been deployed to the armory and sales/CS teams need to be informed. Trigger with '/armory-notify' or 'notify slack about armory changes'.
+description: Notify Slack channels after pushing changes to the Example Company Armory. Use when changes have been deployed to the armory and sales/CS teams need to be informed. Trigger with '/armory-notify' or 'notify slack about armory changes'.
 ---
 
 # Armory Update Notification Skill
 
-Use this skill after pushing changes to the ExampleCo Armory to notify Slack channels.
+Use this skill after pushing changes to the Example Company Armory to notify Slack channels.
 
 ## Invocation
 `/armory-notify` or "notify slack about armory changes"
@@ -16,13 +16,13 @@ Use this skill after pushing changes to the ExampleCo Armory to notify Slack cha
 Run the following to get recent commits affecting the Armory:
 
 ```bash
-cd ~/Programming/product2
-git log --oneline -10 -- public/apps/exampleco-armory/
+cd /Users/you/Programming/product2
+git log --oneline -10 -- public/apps/boostly-armory/
 ```
 
 Also check what specifically changed:
 ```bash
-git diff HEAD~1 --stat -- public/apps/exampleco-armory/
+git diff HEAD~1 --stat -- public/apps/boostly-armory/
 ```
 
 ### Step 2: Generate Summary
@@ -33,7 +33,7 @@ Create a concise, sales-friendly summary of the changes. Format:
 
 [Body text explaining what changed and why it matters]
 
-View the changes here: https://armory.exampleco.com/#[section]
+View the changes here: https://armory.boostly.com/#[section]
 ```
 
 Guidelines for the summary:
@@ -51,9 +51,9 @@ Display the draft message to the user and ask for approval or edits using AskUse
 Once approved, send to all three channels:
 
 ```bash
-node ~/.config/slack-tools/slack.js send exampleco pulse-prod-updates "[MESSAGE]"
-node ~/.config/slack-tools/slack.js send exampleco home-sales "[MESSAGE]"
-node ~/.config/slack-tools/slack.js send exampleco home-cs "[MESSAGE]"
+node ~/.config/slack-tools/slack.js send boostly pulse-prod-updates "[MESSAGE]"
+node ~/.config/slack-tools/slack.js send boostly home-sales "[MESSAGE]"
+node ~/.config/slack-tools/slack.js send boostly home-cs "[MESSAGE]"
 ```
 
 ### Step 5: Confirm
@@ -71,5 +71,5 @@ Tell the user the message was sent to all three channels.
 
 You'll now see the exact same products and descriptions in the enrollment form and on the armory. Thank you @Braden York for the initiative on getting Stripe super clean!
 
-View the changes here: https://armory.exampleco.com/#price-sheet
+View the changes here: https://armory.boostly.com/#price-sheet
 ```
