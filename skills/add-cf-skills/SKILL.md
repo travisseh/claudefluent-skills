@@ -12,7 +12,7 @@ Use this skill to publish an existing local skill into the public ClaudeFluent S
 Run:
 
 ```bash
-~/.claude/scripts/add-to-cf-skills.sh "<skill-name-or-path>"
+/Users/you/.claude/scripts/add-to-cf-skills.sh "<skill-name-or-path>"
 ```
 
 The argument can be:
@@ -24,7 +24,7 @@ The argument can be:
 ## What The Script Does
 
 - Resolves the source skill from common Claude and Codex skill roots.
-- Copies it into `~/Programming/claudefluent-skills/skills/<skill-name>` as the public staging copy.
+- Copies it into `/Users/you/Programming/claudefluent-skills/skills/<skill-name>` as the public staging copy.
 - Removes common junk and private artifacts from that copied public version.
 - Scans the copied public version for likely sensitive content.
 - Stages, commits, and pushes to `https://github.com/travisseh/claudefluent-skills`.
@@ -34,7 +34,7 @@ The argument can be:
 If the script prints `REVIEW_REQUIRED`, inspect and sanitize only the copied files under:
 
 ```text
-~/Programming/claudefluent-skills/skills/<skill-name>
+/Users/you/Programming/claudefluent-skills/skills/<skill-name>
 ```
 
 Do **not** sanitize or simplify the source skill in `~/.codex/skills`, `~/.claude/skills`, or the repo-local skill tree unless Travisse explicitly asks to change the source too.
@@ -42,7 +42,7 @@ Do **not** sanitize or simplify the source skill in `~/.codex/skills`, `~/.claud
 After reviewing the copied public version, rerun with:
 
 ```bash
-CF_SKILLS_FORCE=1 ~/.claude/scripts/add-to-cf-skills.sh "<skill-name-or-path>"
+CF_SKILLS_FORCE=1 /Users/you/.claude/scripts/add-to-cf-skills.sh "<skill-name-or-path>"
 ```
 
 When `CF_SKILLS_FORCE=1` is set and the copied public version already exists, the script reuses that sanitized copy instead of recopying from the source skill. Only use `CF_SKILLS_FORCE=1` after removing or intentionally accepting the flagged content in the copied public version.
