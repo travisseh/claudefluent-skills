@@ -1,12 +1,12 @@
 ---
 name: apple-notes
-description: Work with the user's Apple Notes - search, read, and reference personal notes. Use when accessing, searching, or referencing Apple Notes content.
+description: Work with Travisse's Apple Notes - search, read, and reference personal notes. Use when accessing, searching, or referencing Apple Notes content.
 allowed-tools: Bash
 ---
 
 # Apple Notes Skill
 
-Access the user's Apple Notes via local script at `~/.claude/tools/apple-notes.py`
+Access Travisse's Apple Notes via local script at `~/.claude/tools/apple-notes.py`
 
 ## Commands
 
@@ -34,18 +34,18 @@ python3 ~/.claude/tools/apple-notes.py append "Note Title" "text to add"
 | ClaudeFluent Next Up | 9302 | ClaudeFluent task list and workload planning |
 | Change Log | 6074 | Retrospectives using "What happened / Counterfactual / Core Problem" framework |
 | 2026 GOALS | 5898 | Current year goals |
-| Conference, April 2025 | 8279 | Bishopric, ExampleCo strategy, spiritual goals |
+| Conference, April 2025 | 8279 | Bishopric, Example Company strategy, spiritual goals |
 
 ## When to Use
 
-- the user asks about patterns/lessons → `read 6074` (Change Log)
-- the user asks to search notes → `search "keyword"`
-- the user wants to reference a note → `read <id>`
+- Travisse asks about patterns/lessons → `read 6074` (Change Log)
+- Travisse asks to search notes → `search "keyword"`
+- Travisse wants to reference a note → `read <id>`
 - Add tasks to ClaudeFluent workload → `prepend "ClaudeFluent Next Up" "task here"`
 
 ## Context
 
-the user uses Apple Notes for:
+Travisse uses Apple Notes for:
 - Personal reflection and journaling (Change Log)
 - Work retrospectives
 - Conference/church notes
