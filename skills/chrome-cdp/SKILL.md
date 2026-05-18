@@ -10,8 +10,8 @@ This skill is deprecated and should not be chosen for normal Codex work.
 Going forward, use `$chrome-live-session-preferences` for the user's real Chrome session:
 
 ```bash
-~/.codex/skills/chrome-live-session-preferences/scripts/chrome-live.sh active-tab
-~/.codex/skills/chrome-live-session-preferences/scripts/chrome-live.sh exec-js <<'EOF'
+/Users/you/.codex/skills/chrome-live-session-preferences/scripts/chrome-live.sh active-tab
+/Users/you/.codex/skills/chrome-live-session-preferences/scripts/chrome-live.sh exec-js <<'EOF'
 (() => document.body.innerText.slice(0, 2000))();
 EOF
 ```
