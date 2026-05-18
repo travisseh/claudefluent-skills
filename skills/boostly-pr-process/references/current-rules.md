@@ -1,12 +1,12 @@
-# Current ExampleCo PR Rules
+# Current Example Company PR Rules
 
 Use this as a quick reminder. Re-read the repo files if accuracy matters.
 
 ## Source Files
 
-- `~/Programming/exampleco/CONTRIBUTING.md`
-- `~/Programming/exampleco/.github/pull_request_template.md`
-- `~/Programming/exampleco/.github/CODEOWNERS`
+- `/Users/you/Programming/boostly/CONTRIBUTING.md`
+- `/Users/you/Programming/boostly/.github/pull_request_template.md`
+- `/Users/you/Programming/boostly/.github/CODEOWNERS`
 
 ## Current Expectations
 
@@ -29,7 +29,7 @@ Use this as a quick reminder. Re-read the repo files if accuracy matters.
 
 ## Current CODEOWNERS Highlights
 
-- Default reviewer group: `@exampleco/core`
+- Default reviewer group: `@boostly/core`
 - Backend review required for:
   - `prisma/schema.prisma`
   - `prisma/migrations/`

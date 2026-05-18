@@ -1,4 +1,4 @@
 interface:
-  display_name: "ExampleCo PR Process"
-  short_description: "ExampleCo pull request workflow"
-  default_prompt: "Use $exampleco-pr-process to prepare or review a pull request for the ExampleCo repo."
+  display_name: "Example Company PR Process"
+  short_description: "Example Company pull request workflow"
+  default_prompt: "Use $boostly-pr-process to prepare or review a pull request for the Example Company repo."

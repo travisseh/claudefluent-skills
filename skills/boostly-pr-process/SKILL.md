@@ -1,9 +1,9 @@
 ---
-name: exampleco-pr-process
-description: Prepare, review, or publish pull requests for the ExampleCo repository using the repo-specific contribution workflow. Use when Codex needs to create a branch, verify PR readiness, draft a PR title/body, check required local validation, confirm reviewer routing, explain how ExampleCo expects contribution work to be packaged and reviewed, or produce a PR scope explainer for changed/planned files.
+name: boostly-pr-process
+description: Prepare, review, or publish pull requests for the Example Company repository using the repo-specific contribution workflow. Use when Codex needs to create a branch, verify PR readiness, draft a PR title/body, check required local validation, confirm reviewer routing, explain how Example Company expects contribution work to be packaged and reviewed, or produce a PR scope explainer for changed/planned files.
 ---
 
-# ExampleCo PR Process
+# Example Company PR Process
 
 Read the current repository rules before doing PR work. Do not rely on memory if the repo docs may have changed.
 
@@ -12,11 +12,11 @@ Read the current repository rules before doing PR work. Do not rely on memory if
 Use the mode that matches the ask:
 
 - **Full PR prep:** Default mode for branch, validation, commit guidance, PR body, and reviewer routing.
-- **PR scope explainer:** Use before implementation, during review, or after implementation when the user asks what changed, why a file changed, whether the PR is too big, whether tests are oversized, or how to make the PR smaller. This mode can run even when no PR is being opened yet.
+- **PR scope explainer:** Use before implementation, during review, or after implementation when Travisse asks what changed, why a file changed, whether the PR is too big, whether tests are oversized, or how to make the PR smaller. This mode can run even when no PR is being opened yet.
 
 ## Read These Files First
 
-Open these files from the ExampleCo repo before preparing or reviewing a PR:
+Open these files from the Example Company repo before preparing or reviewing a PR:
 
 - `CONTRIBUTING.md`
 - `.github/pull_request_template.md`
@@ -30,7 +30,7 @@ Use the current file contents as the source of truth. If any of those files conf
 
 Confirm that the change maps to exactly one Linear issue.
 
-- If no issue exists, say that ExampleCo expects one before PR work proceeds.
+- If no issue exists, say that Example Company expects one before PR work proceeds.
 - If the diff covers multiple concerns, call that out and recommend splitting the work into separate PRs.
 
 ### 2. Verify branch naming
@@ -54,9 +54,9 @@ Inspect the diff and confirm that the change is reviewable as one issue.
 - Flag opportunistic refactors that should be split out.
 - Flag missing tests when behavior changed.
 
-### 3.5. Run the ExampleCo architecture pass
+### 3.5. Run the Example Company architecture pass
 
-Before PR prep, inspect the changed files for ExampleCo codebase fit. The goal is not abstract purity; it is to keep new work shaped like the surrounding app so reviewers do not have to unwind architectural drift.
+Before PR prep, inspect the changed files for Example Company codebase fit. The goal is not abstract purity; it is to keep new work shaped like the surrounding app so reviewers do not have to unwind architectural drift.
 
 Check these points explicitly:
 
@@ -77,14 +77,14 @@ Check these points explicitly:
 
 ### 3.6. Run the tiny PR critic pass
 
-Before validation or PR drafting, explicitly challenge whether the diff is as small and conventional as it should be for ExampleCo review.
+Before validation or PR drafting, explicitly challenge whether the diff is as small and conventional as it should be for Example Company review.
 
 Answer these questions in the PR-readiness notes:
 
 - **Smallest PR:** Is this the smallest coherent PR that solves the Linear issue? If not, identify exactly what should be split out.
 - **New files justified:** Are every new source file, helper, hook, test, fixture, script, and config file necessary for this issue? If a new file mostly exists because the agent preferred a fresh abstraction, recommend folding it into the nearest existing pattern.
 - **Artifacts removed:** Are screenshots, generated images, debug dumps, logs, temp files, local browser artifacts, and exploratory scripts absent from the commit? If present, remove them or call them out as blockers.
-- **Nearby patterns matched:** Does the implementation follow the closest existing ExampleCo patterns for file placement, naming, server actions, tests, hooks, and component boundaries? Prefer the local pattern over a generic "best practice."
+- **Nearby patterns matched:** Does the implementation follow the closest existing Example Company patterns for file placement, naming, server actions, tests, hooks, and component boundaries? Prefer the local pattern over a generic "best practice."
 - **Commit contents clear:** What exactly would be committed? Summarize the changed files by responsibility before recommending commit or PR creation.
 
 If the answer to any item is weak, treat the PR as not ready until the scope is tightened or the tradeoff is explicitly accepted.
@@ -98,7 +98,7 @@ Use this workflow:
 1. **Identify the scope:** Inspect `git status --short`, `git diff --stat`, `git diff --name-status`, staged changes, and untracked files. If implementation has not started, use the current plan or Linear issue to describe the intended files and likely risks.
 2. **Separate file categories:** Group files as app/source, tests, fixtures/mocks, config, generated artifacts, docs, and unrelated/local files.
 3. **Explain each changed file:** For every changed file, state what changed, why it changed for this issue, whether it is necessary, and the smallest credible alternative.
-4. **Challenge tests directly:** Call out test files that look oversized for the behavior, especially new top-level test files, broad fixtures, snapshot churn, unrelated coverage, or tests that do not match nearby ExampleCo conventions. Recommend smaller colocated or existing-pattern coverage when appropriate.
+4. **Challenge tests directly:** Call out test files that look oversized for the behavior, especially new top-level test files, broad fixtures, snapshot churn, unrelated coverage, or tests that do not match nearby Example Company conventions. Recommend smaller colocated or existing-pattern coverage when appropriate.
 5. **Find shrink opportunities:** Identify exact files, helpers, tests, artifacts, or refactors that can be removed, folded into existing files, deferred, or split into a follow-up PR.
 6. **End with a recommendation:** Say whether to keep the PR as-is, shrink before commit, split into multiple PRs, or proceed with a noted tradeoff.
 
@@ -108,7 +108,7 @@ Preferred output for this mode:
 2. **Changed files:** Bullets in the format `path` - why it changed - keep/remove/split guidance.
 3. **Test footprint:** Whether the test changes are right-sized, too broad, missing, or should be moved.
 4. **How to make it smaller:** Concrete deletions, folds, or split-outs.
-5. **Next action:** What the user or Codex should do before commit/PR.
+5. **Next action:** What Travisse or Codex should do before commit/PR.
 
 ### 4. Run the required local checks
 
@@ -154,7 +154,7 @@ Use `.github/CODEOWNERS` to determine likely required reviewers.
 
 Current notable routing:
 
-- Default: `@exampleco/core`
+- Default: `@boostly/core`
 - `prisma/schema.prisma`: `@jimmycozza @braindev`
 - `prisma/migrations/`: `@jimmycozza @braindev`
 - `*.sql`: `@jimmycozza @braindev`
