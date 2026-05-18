@@ -1,18 +1,18 @@
 ---
 name: cc-experts
-description: Search official Anthropic Claude Code/Cowork docs plus a curated panel of Claude Code, Codex, AI coding agent, and product-engineering experts across YouTube and X/Twitter. Use when the user asks what the experts or official docs say about Claude Code, Codex, Cursor, Cowork, AI coding workflows, agentic development, product engineering with AI, or wants recent expert content synthesized. This skill routes YouTube work through youtube-transcript and X/Twitter work through x-api.
+description: Search official Anthropic Claude Code/Cowork docs plus a curated panel of Claude Code, Codex, AI coding agent, and product-engineering experts across YouTube and X/Twitter. Use when Travisse asks what the experts or official docs say about Claude Code, Codex, Cursor, Cowork, AI coding workflows, agentic development, product engineering with AI, or wants recent expert content synthesized. This skill routes YouTube work through youtube-transcript and X/Twitter work through x-api.
 ---
 
 # CC Experts
 
-Use this skill to answer questions by searching official Anthropic Claude Code/Cowork documentation and recent content from the user's curated Claude Code / Codex expert panel.
+Use this skill to answer questions by searching official Anthropic Claude Code/Cowork documentation and recent content from Travisse's curated Claude Code / Codex expert panel.
 
 ## Source skills
 
 Reference and follow these skills for the actual retrieval mechanics:
 
-- `~/Programming/personal-master/personal/.agents/skills/x-api/SKILL.md`
-- `~/Programming/personal-master/personal/.agents/skills/youtube-transcript/SKILL.md`
+- `/Users/you/Programming/personal-master/personal/.agents/skills/x-api/SKILL.md`
+- `/Users/you/Programming/personal-master/personal/.agents/skills/youtube-transcript/SKILL.md`
 
 Do not reimplement their credential, pricing, or transcript workflows here. This skill is the routing and research strategy layer.
 
@@ -46,7 +46,7 @@ Do not reimplement their credential, pricing, or transcript workflows here. This
 
 ## Default workflow
 
-1. Translate the user's question into 2-5 search concepts.
+1. Translate Travisse's question into 2-5 search concepts.
    - Example: "Should I teach subagents?" becomes `subagents`, `"Claude Code" agents`, `workflow`, `course`, `training`.
    - Prefer precise tool/product terms over generic words like `AI` or `coding`.
 2. Check official Claude Code/Cowork docs first when the question is about features, commands, settings, permissions, workflows, product behavior, availability, security, or "how does this work?"
@@ -75,28 +75,28 @@ Decision rules:
 - For Cowork behavior, prefer `claude.com/docs/cowork*`.
 - For rapidly changing product details, browse the docs rather than relying on memory.
 - If official docs and expert commentary conflict, state the conflict and treat official docs as authoritative unless the expert is clearly describing unreleased/beta behavior.
-- Cite official docs separately from expert commentary so the user can tell "what Anthropic says" from "what practitioners recommend."
+- Cite official docs separately from expert commentary so Travisse can tell "what Anthropic says" from "what practitioners recommend."
 
 ## X/Twitter search strategy
 
 Use the `x-api` CLI from its skill directory:
 
 ```bash
-cd ~/Programming/personal-master/personal/.agents/skills/x-api
+cd /Users/you/Programming/personal-master/personal/.agents/skills/x-api
 python3 scripts/x.py --format md search '(from:felixrieseberg OR from:amorriscode OR from:bcherny OR from:ClaudeDevs) ("Claude Code" OR Codex OR Cowork) -filter:retweets' --max 25
 ```
 
 For a specific expert:
 
 ```bash
-cd ~/Programming/personal-master/personal/.agents/skills/x-api
+cd /Users/you/Programming/personal-master/personal/.agents/skills/x-api
 python3 scripts/x.py --format md search 'from:amorriscode "Claude Code" -filter:retweets' --max 20
 ```
 
 For recent timeline scanning:
 
 ```bash
-cd ~/Programming/personal-master/personal/.agents/skills/x-api
+cd /Users/you/Programming/personal-master/personal/.agents/skills/x-api
 python3 scripts/x.py --format md user-tweets amorriscode --max 20
 ```
 
@@ -130,7 +130,7 @@ Only after a title/description match, fetch transcripts through the `youtube-tra
 
 ```bash
 uv run --with youtube-transcript-api python \
-  ~/.codex/skills/youtube-transcript/scripts/fetch_youtube_transcript.py \
+  /Users/you/.codex/skills/youtube-transcript/scripts/fetch_youtube_transcript.py \
   "https://www.youtube.com/watch?v=VIDEO_ID" \
   --format json
 ```
@@ -138,7 +138,7 @@ uv run --with youtube-transcript-api python \
 Decision rules:
 
 - Pull at most 2-4 transcripts by default. Ask before pulling many more.
-- Prefer newest relevant videos unless the user asks for "best" or evergreen advice.
+- Prefer newest relevant videos unless Travisse asks for "best" or evergreen advice.
 - If titles are ambiguous, open the video page or description before transcript retrieval.
 - When using transcripts, extract only the sections that answer the question and cite the video.
 
@@ -151,7 +151,7 @@ Recommended structure:
 - `Short answer:` one direct judgment or summary.
 - `Official baseline:` what Anthropic docs say, with links.
 - `What the experts seem to be saying:` 3-6 bullets, each attributed.
-- `Practical takeaways for the user:` 2-5 bullets grounded in his ClaudeFluent / product context when relevant.
+- `Practical takeaways for Travisse:` 2-5 bullets grounded in his ClaudeFluent / product context when relevant.
 - `Sources checked:` concise list of X searches, tweets, videos, or transcripts used.
 
 ## Guardrails
