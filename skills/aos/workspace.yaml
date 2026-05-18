@@ -1,0 +1,9 @@
+default_dirs:
+  repos:
+    - default: repos/
+
+repos:
+  - name: aos
+    source: https://github.com/Example Company/aos.git
+  - name: aos-lib-core
+    source: https://github.com/mikeyamadeo/aos-lib-core.git
