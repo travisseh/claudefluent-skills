@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Search Reddit for a phrase/topic via Apify trudax/reddit-scraper-lite.
 
-ExampleCo variant: artifacts land under the product2 repo, defaults tuned
+Example Company variant: artifacts land under the product2 repo, defaults tuned
 for restaurant-marketing / competitive-intel research.
 
 Writes a markdown report and raw JSON to artifacts/reddit-search/<slug>/.
@@ -24,10 +24,10 @@ APIFY_ENDPOINT = (
     f"https://api.apify.com/v2/acts/{ACTOR}/run-sync-get-dataset-items"
 )
 ENV_FILE = Path(
-    "~/Programming/personal-master/personal/"
+    "/Users/you/Programming/personal-master/personal/"
     "claude_course/website/.env.local"
 )
-WORKSPACE_ROOT = Path("~/Programming/product2")
+WORKSPACE_ROOT = Path("/Users/you/Programming/product2")
 
 
 def load_token() -> str:
@@ -198,7 +198,7 @@ def build_report(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Search Reddit via Apify and write a markdown report (ExampleCo variant)."
+        description="Search Reddit via Apify and write a markdown report (Example Company variant)."
     )
     parser.add_argument("query", help="Search phrase or topic")
     parser.add_argument(
@@ -289,26 +289,26 @@ def main() -> int:
         out_dir = WORKSPACE_ROOT / "artifacts" / "reddit-search" / slug
     out_dir.mkdir(parents=True, exist_ok=True)
 
-    print(f"[exampleco-reddit-search] querying Apify for: {args.query!r}", file=sys.stderr)
-    print(f"[exampleco-reddit-search] sort={args.sort} time={args.time} posts={args.posts} max_items={max_items}", file=sys.stderr)
+    print(f"[boostly-reddit-search] querying Apify for: {args.query!r}", file=sys.stderr)
+    print(f"[boostly-reddit-search] sort={args.sort} time={args.time} posts={args.posts} max_items={max_items}", file=sys.stderr)
     started = time.time()
     items = run_actor(token, payload, args.timeout)
     elapsed = time.time() - started
-    print(f"[exampleco-reddit-search] got {len(items)} dataset items in {elapsed:.1f}s", file=sys.stderr)
+    print(f"[boostly-reddit-search] got {len(items)} dataset items in {elapsed:.1f}s", file=sys.stderr)
 
     raw_path = out_dir / "raw.json"
     raw_path.write_text(json.dumps(items, indent=2))
 
     posts, comments = group_items(items)
-    print(f"[exampleco-reddit-search] parsed {len(posts)} posts, {sum(len(v) for v in comments.values())} comments", file=sys.stderr)
+    print(f"[boostly-reddit-search] parsed {len(posts)} posts, {sum(len(v) for v in comments.values())} comments", file=sys.stderr)
 
     report = build_report(args.query, args, posts, comments)
     report_path = out_dir / "report.md"
     report_path.write_text(report)
 
     est_cost = len(items) * 0.004 + 0.02 * 2
-    print(f"[exampleco-reddit-search] wrote {report_path}", file=sys.stderr)
-    print(f"[exampleco-reddit-search] estimated cost: ${est_cost:.3f}", file=sys.stderr)
+    print(f"[boostly-reddit-search] wrote {report_path}", file=sys.stderr)
+    print(f"[boostly-reddit-search] estimated cost: ${est_cost:.3f}", file=sys.stderr)
 
     print(str(report_path))
     return 0
