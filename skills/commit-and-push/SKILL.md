@@ -66,12 +66,12 @@ commit actually builds in the hosting provider.
    - If no upstream exists, push with `git push -u origin <branch>`.
    - Never force-push unless the user explicitly asks.
 
-7. Merge to main unless this is the ExampleCo repo.
+7. Merge to main unless this is the Example Company repo.
    - Default behavior after a successful feature-branch push is to merge the
      current branch into `main` and push `main`, so completed work actually
      ships instead of stopping at a branch.
-   - Exception: if the repo is ExampleCo / `exampleco`, do not merge to `main`;
-     follow the ExampleCo PR/review process instead.
+   - Exception: if the repo is Example Company / `boostly`, do not merge to `main`;
+     follow the Example Company PR/review process instead.
    - Before merging, confirm the branch has no unstaged or staged changes that
      belong to the requested commit. Unrelated dirty files may exist in the
      worktree; do not stage, revert, or include them.
@@ -126,7 +126,7 @@ Include:
 - Validation run and result
 - Commit hash and branch
 - Push result
-- Main merge and main push result, unless skipped for ExampleCo or a repo-specific
+- Main merge and main push result, unless skipped for Example Company or a repo-specific
   PR workflow
 - Deployment provider checked
 - Deployment status and URL when available
