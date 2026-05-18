@@ -11,7 +11,7 @@ from pathlib import Path
 
 AE_REST_BASE = "https://app.askelephant.ai/api/v2"
 AE_GRAPHQL_URL = "https://app.askelephant.ai/graphql"
-DEFAULT_PERSON = "user@example.com"
+DEFAULT_PERSON = "user.com"
 DEFAULT_WORKSPACE_ID = "wrks_01JNKRAD8B3QJVT7CZPPPNMTRZ"
 
 
@@ -32,8 +32,8 @@ def load_default_env() -> None:
     for path in [
         Path.cwd() / ".env",
         Path.cwd() / ".env.local",
-        Path("~/Programming/exampleco-reporting/apps/dashboard/.env.local"),
-        Path("~/.config/render/product-analytics.env"),
+        Path("/Users/you/Programming/boostly-reporting/apps/dashboard/.env.local"),
+        Path("/Users/you/.config/render/product-analytics.env"),
     ]:
         load_env_file(path)
 

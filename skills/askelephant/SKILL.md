@@ -1,6 +1,6 @@
 ---
 name: askelephant
-description: Search AskElephant meetings and transcripts, especially the user's meetings. Use when the user asks about AskElephant, AE meetings, meeting transcripts, promises, follow-ups, objections, summaries, or things discussed in recent calls.
+description: Search AskElephant meetings and transcripts, especially Travisse's meetings. Use when the user asks about AskElephant, AE meetings, meeting transcripts, promises, follow-ups, objections, summaries, or things discussed in recent calls.
 ---
 
 # AskElephant Meeting Search
@@ -14,29 +14,29 @@ Use this skill to search AskElephant meetings/transcripts and answer questions l
 
 ## Default Behavior
 
-- Default person: `user@example.com`
+- Default person: `user.com`
 - Default date: yesterday when the user asks a relative daily question.
 - Default source: AskElephant engagements with transcripts.
-- Prefer meetings where the user is owner, host, internal participant, or appears in transcript metadata.
+- Prefer meetings where Travisse is owner, host, internal participant, or appears in transcript metadata.
 
 ## Quick Commands
 
 Run from any directory:
 
 ```bash
-python3 ~/.codex/skills/askelephant/scripts/search_meetings.py --person user@example.com --date yesterday --query "promise promised follow up send I'll I will"
+python3 /Users/you/.codex/skills/askelephant/scripts/search_meetings.py --person user.com --date yesterday --query "promise promised follow up send I'll I will"
 ```
 
 For a range:
 
 ```bash
-python3 ~/.codex/skills/askelephant/scripts/search_meetings.py --person user@example.com --since 2026-05-06 --until 2026-05-07 --query "pricing objection competitor"
+python3 /Users/you/.codex/skills/askelephant/scripts/search_meetings.py --person user.com --since 2026-05-06 --until 2026-05-07 --query "pricing objection competitor"
 ```
 
 To fetch broader context without keyword filtering:
 
 ```bash
-python3 ~/.codex/skills/askelephant/scripts/search_meetings.py --person user@example.com --date yesterday --limit 20
+python3 /Users/you/.codex/skills/askelephant/scripts/search_meetings.py --person user.com --date yesterday --limit 20
 ```
 
 ## Auth
@@ -54,12 +54,12 @@ Fallback:
 
 Common local files loaded automatically when present:
 
-- `~/Programming/exampleco-reporting/apps/dashboard/.env.local`
-- `~/.config/render/product-analytics.env`
+- `/Users/you/Programming/boostly-reporting/apps/dashboard/.env.local`
+- `/Users/you/.config/render/product-analytics.env`
 
 ## Answering Follow-Up / Promise Questions
 
-1. Search yesterday's meetings for the user with promise/action keywords.
+1. Search yesterday's meetings for Travisse with promise/action keywords.
 2. Read the returned snippets and transcript excerpts.
 3. Extract concrete commitments only:
    - promised sends/docs
