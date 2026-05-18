@@ -9,7 +9,7 @@ description: >
   an expected-impact review covering scope, guardrails, dry-run, alerting,
   rollout, and rollback. For ClaudeFluent / cf / claude_course work, also use
   the cf-release skill before approving or deploying production changes. For
-  ExampleCo / exampleco repo work, also use the exampleco-pr-process skill.
+  Example Company / boostly repo work, also use the boostly-pr-process skill.
 ---
 
 # Code Review
@@ -23,10 +23,10 @@ you changed. Lead with concrete risks, not a general summary.
   `cf-release` and apply its release checklist. This is required when the diff
   touches Vercel, Convex, cron jobs, env vars, email sends, Stripe, sessions,
   onboarding, admin workflows, or anything customer-facing.
-- For ExampleCo / `exampleco` repo work, also use `exampleco-pr-process` and apply
-  its repo-specific PR workflow. This is required when reviewing ExampleCo diffs,
+- For Example Company / `boostly` repo work, also use `boostly-pr-process` and apply
+  its repo-specific PR workflow. This is required when reviewing Example Company diffs,
   preparing PRs, checking PR readiness, validating branch naming, routing
-  reviewers, or deciding whether a ExampleCo change is ready to publish. Always
+  reviewers, or deciding whether a Example Company change is ready to publish. Always
   include the tiny PR critic pass from that skill: smallest coherent PR, new
   files justified, artifacts removed, nearby patterns matched, and exact commit
   contents understood.
@@ -49,9 +49,9 @@ Look for:
 If there are no findings, say that clearly and mention remaining test gaps or
 residual risk.
 
-## ExampleCo-Specific Review Checks
+## Example Company-Specific Review Checks
 
-For ExampleCo / `exampleco` repo diffs, apply these checks in addition to the
+For Example Company / `boostly` repo diffs, apply these checks in addition to the
 standard review. These are concrete codebase-fit checks, not generic style
 preferences.
 
