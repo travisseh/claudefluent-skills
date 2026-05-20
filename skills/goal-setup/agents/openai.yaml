@@ -1,0 +1,4 @@
+interface:
+  display_name: "Goal Setup"
+  short_description: "Draft and manage evidence-based Codex Goals."
+  default_prompt: "Help me turn this task into a strong /goal with a measurable outcome, verification surface, constraints, and blocked stop condition."
