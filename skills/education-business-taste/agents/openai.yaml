@@ -1,0 +1,4 @@
+interface:
+  display_name: "Education Business Taste"
+  short_description: "Premium course, cohort, bootcamp, and education-business strategy"
+  default_prompt: "Use $education-business-taste to audit my education business and suggest the highest-leverage next changes."

@@ -1,0 +1,36 @@
+{
+  "skill_name": "education-business-taste",
+  "evals": [
+    {
+      "id": "claudefluent-offer-audit",
+      "prompt": "Use education-business-taste to audit ClaudeFluent's current live virtual class offer and suggest the highest leverage changes for the next cohort.",
+      "expected_output": "Diagnose the likely bottleneck before prescribing, frame ClaudeFluent as professional upskilling, and give concrete offer, curriculum, proof, distribution, and measurement changes.",
+      "assertions": [
+        "Does not default to generic course marketing advice.",
+        "Includes at least one source lens from cohort courses and one from offer/pricing.",
+        "Warns against bootcamp-style job-placement promises unless explicitly justified.",
+        "Provides a 30-day or next-cohort test plan."
+      ]
+    },
+    {
+      "id": "bootcamp-positioning-risk",
+      "prompt": "I want to market my AI coding class like a coding bootcamp with a job outcome promise. Use education-business-taste.",
+      "expected_output": "Push back on job/outcome claims, require proof and legal scrutiny, use bootcamp and BloomTech/CIRR cautionary framing, and suggest safer transformation claims.",
+      "assertions": [
+        "Mentions outcomes methodology or audited proof as a requirement.",
+        "Separates useful bootcamp mechanics from risky career-placement promises.",
+        "Suggests safer alternatives such as project artifacts, skill milestones, or workplace productivity outcomes."
+      ]
+    },
+    {
+      "id": "source-refresh",
+      "prompt": "Use education-business-taste to find recent source material on cohort-based course design and summarize what I should study.",
+      "expected_output": "Use the source map and retrieval workflow, recommend searches or transcripts from Maven/Wes Kao/Gagan Biyani/altMBA sources, and avoid summarizing videos from titles alone.",
+      "assertions": [
+        "Names the relevant source cluster.",
+        "Includes clickable source URLs or exact search commands.",
+        "States that transcripts should be pulled before summarizing videos."
+      ]
+    }
+  ]
+}
