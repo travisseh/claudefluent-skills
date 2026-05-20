@@ -1,6 +1,6 @@
 ---
 name: grain
-description: Query Grain meeting recordings, pull transcripts, search by date/title/team, upload recordings, and share with teammates. Use whenever the user wants to find a meeting, get a transcript, check action items, search recordings, upload a recording, or share one. Examples — "find my meetings this week", "get the transcript from yesterday's standup", "what action items came out of the ExampleCo sync", "search grain for onboarding", "upload this recording to grain", "share this meeting with the team".
+description: Query Grain meeting recordings, pull transcripts, search by date/title/team, upload recordings, and share with teammates. Use whenever Travisse wants to find a meeting, get a transcript, check action items, search recordings, upload a recording, or share one. Examples — "find my meetings this week", "get the transcript from yesterday's standup", "what action items came out of the Example Company sync", "search grain for onboarding", "upload this recording to grain", "share this meeting with the team".
 ---
 
 # Grain API Skill
