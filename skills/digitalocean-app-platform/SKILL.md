@@ -1,13 +1,13 @@
 ---
 name: digitalocean-app-platform
-description: Manage and monitor ExampleCo DigitalOcean App Platform apps from Codex. Use for listing apps, inspecting in-store-reporting/in-store-dashboard, checking deployments after git pushes, triggering deployments, and updating App Platform specs/env vars/secrets.
+description: Manage and monitor Example Company DigitalOcean App Platform apps from Codex. Use for listing apps, inspecting in-store-reporting/in-store-dashboard, checking deployments after git pushes, triggering deployments, and updating App Platform specs/env vars/secrets.
 enabled: true
-tags: [digitalocean, app-platform, deployments, exampleco, doctl, mcp]
+tags: [digitalocean, app-platform, deployments, boostly, doctl, mcp]
 ---
 
 # DigitalOcean App Platform
 
-Use this skill when the user asks about DigitalOcean App Platform apps, deploys, environment variables, secrets, or monitoring after a git push.
+Use this skill when Travisse asks about DigitalOcean App Platform apps, deploys, environment variables, secrets, or monitoring after a git push.
 
 ## Auth
 
@@ -29,7 +29,7 @@ args = ["-lc", "source ~/.config/digitalocean/env && exec npx -y @digitalocean/m
 
 Prefer the `digitalocean` MCP tools when they are available in a thread. If not available, use `doctl` with `--access-token "$DIGITALOCEAN_API_TOKEN"`.
 
-## Known ExampleCo Apps
+## Known Example Company Apps
 
 Primary TapCards / in-store app:
 
@@ -37,10 +37,10 @@ Primary TapCards / in-store app:
 - Local spec name: `in-store-dashboard`
 - App ID: `5172b789-9b54-4c11-ba7c-c6ac49070335`
 - Default URL: `https://in-store-reporting-5tmly.ondigitalocean.app`
-- Source repo: `ExampleCo/product`
+- Source repo: `Example Company/product`
 - Branch: `main`
 - Source dir: `public/apps/tapcards-dashboard`
-- Local spec: `~/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml`
+- Local spec: `/Users/you/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml`
 
 Other apps currently seen:
 
@@ -82,13 +82,13 @@ Update app from the local spec:
 ```bash
 source ~/.config/digitalocean/env
 doctl apps update 5172b789-9b54-4c11-ba7c-c6ac49070335 \
-  --spec ~/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml \
+  --spec /Users/you/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml \
   --access-token "$DIGITALOCEAN_API_TOKEN"
 ```
 
 ## Deployment Monitoring Workflow
 
-After a git push to `ExampleCo/product` `main`:
+After a git push to `Example Company/product` `main`:
 
 1. List deployments for app `5172b789-9b54-4c11-ba7c-c6ac49070335`.
 2. Find the newest deployment whose cause mentions the pushed commit.
@@ -108,7 +108,7 @@ doctl apps list-deployments 5172b789-9b54-4c11-ba7c-c6ac49070335 \
 Relevant spec file:
 
 ```bash
-~/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml
+/Users/you/Programming/product2/public/apps/tapcards-dashboard/.do/app.yaml
 ```
 
 Known envs in the app spec:
@@ -120,7 +120,7 @@ Known envs in the app spec:
 - `TAPCARDS_DB_PASSWORD` secret
 - `V2_DATABASE_URL` secret
 
-For secret changes, prefer updating the App Platform spec through DigitalOcean tooling without exposing secret values in command output. If a secret value must be entered, ask the user for it at action time and do not echo it. Do not write secret values into the repo.
+For secret changes, prefer updating the App Platform spec through DigitalOcean tooling without exposing secret values in command output. If a secret value must be entered, ask Travisse for it at action time and do not echo it. Do not write secret values into the repo.
 
 Before applying an app spec update, show the non-secret spec diff or summarize the exact env keys being added/changed. Updating the live app spec can trigger deployments and affect production.
 
