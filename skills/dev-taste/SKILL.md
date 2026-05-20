@@ -61,6 +61,49 @@ Start with these sources before doing a wider search.
 - Known relevant video:
   - `Building a REAL feature with Claude Code: every step explained` on Matt Pocock's channel.
 
+## Software Engineering Laws Lens
+
+Use https://lawsofsoftwareengineering.com/ as a compact checklist of durable engineering principles when judging AI coding advice. The point is not to cite every law. The point is to notice when a workflow respects or violates laws that still matter when agents write the code.
+
+### Architecture and Design
+
+- Conway's Law: advice is stronger when it accounts for team boundaries, review ownership, and communication paths, not just individual prompting.
+- Hyrum's Law: be suspicious of agents changing observable behavior casually; production users may depend on undocumented behavior.
+- Gall's Law: prefer workflows that evolve working simple systems into richer systems instead of asking agents for a large replacement in one pass.
+- Law of Leaky Abstractions: good agent workflows inspect the real code and runtime behavior underneath abstractions.
+- Tesler's Law: complexity can move between code, prompts, product rules, tests, and operations; it rarely disappears.
+- Second-System Effect: down-rank "rewrite it with AI" enthusiasm unless the source explains migration, compatibility, and rollback.
+- Fallacies of Distributed Computing and CAP: distributed systems advice should discuss latency, failure, consistency, and partition tradeoffs explicitly.
+- YAGNI, KISS, DRY, SOLID, Law of Demeter, and Principle of Least Astonishment: prefer content that uses AI to make code smaller, clearer, and more predictable, not merely more abstract.
+
+### Planning and Estimation
+
+- Brooks's Law, Ringelmann Effect, Price's Law, and Bus Factor: more agents or more humans are not automatically more throughput; look for ownership, handoff, and knowledge-spread mechanics.
+- Parkinson's Law, Hofstadter's Law, and the Ninety-Ninety Rule: strong workflows keep scope small, maintain visible progress, and verify the last hard 10%.
+- Goodhart's Law: be skeptical of proxy metrics such as lines changed, PR count, token volume, or benchmark wins when the goal is maintainable production code.
+- Gilb's Law: prefer practitioners who define observable quality signals, even imperfect ones, over vague claims that "the AI made it better."
+- Pareto Principle: look for advice that identifies the small number of review, context, test, and architecture moves that prevent most AI-code failures.
+
+### Quality and Maintenance
+
+- Boy Scout Rule and Broken Windows Theory: high-signal workflows leave code incrementally better and fix local messes that would otherwise train future agents into worse edits.
+- Technical Debt: treat debt as anything that slows future change, including prompt-only knowledge, missing tests, unclear boundaries, and brittle generated code.
+- Murphy's Law: prefer workflows that assume agent mistakes will happen and put checks, tests, review, and rollback in the path.
+- Postel's Law: useful when discussing interfaces, but watch for advice that accepts sloppy inputs without protecting internal invariants.
+- Kernighan's Law: generated cleverness is dangerous; if debugging will be harder than writing, make the agent simplify.
+- Testing Pyramid and Pesticide Paradox: favor fast, layered tests and occasional new test angles instead of only replaying the same happy-path checks.
+- Lehman's Laws: long-lived software must keep evolving; good AI workflows include maintenance, migration, and cleanup, not just first implementation.
+- Linus's Law: review can help, but only when reviewers have enough context and the change is small enough to inspect.
+
+### Decision-Making
+
+- Dunning-Kruger, Confirmation Bias, and The Map Is Not the Territory: down-rank confident agent takes that do not inspect the repo, logs, product behavior, or user reality.
+- Occam's Razor and Hanlon's Razor: prefer simple explanations and avoid inventing intent behind confusing code before checking history and constraints.
+- Sunk Cost Fallacy: a bad generated implementation should be deleted quickly once evidence shows it is the wrong path.
+- Hype Cycle and Amara's Law: current model hype should not replace durable workflow discipline; still watch for long-run capability changes that alter the workflow.
+- Lindy Effect: stable engineering principles deserve more weight than fresh prompt tricks unless the new trick survives production use.
+- First Principles Thinking and Inversion: strong sources break the problem down and ask how the project could fail before prescribing tools.
+
 ## Retrieval Workflow
 
 When the user asks a question:
@@ -72,6 +115,7 @@ When the user asks a question:
    - agent autonomy?
    - tools such as Claude Code, Codex, OpenCode, Cursor, Ralph, AI SDK, MCP, or skills?
    - team workflow and production engineering?
+   - which durable engineering law or failure mode is the question really about?
 
 2. Search YouTube from the default sources first:
 
@@ -93,6 +137,7 @@ yt-dlp --flat-playlist --print '%(upload_date)s|%(channel)s|%(channel_url)s|%(we
    - Best videos to watch, with clickable URLs.
    - Why each video is relevant to the user's question.
    - The strongest actionable takeaways.
+   - Which software engineering laws the advice respects or violates, when useful.
    - Any disagreement or uncertainty between sources.
    - A short "what I would try next" recommendation.
 
@@ -103,6 +148,7 @@ Bias toward sources that are:
 - Production-minded over demo-minded.
 - Skeptical of vibes and magic prompts.
 - Specific about workflows, code ownership, testing, review, and failure modes.
+- Aligned with durable software engineering laws: small slices, simple systems, explicit tradeoffs, real tests, and readable code.
 - Useful for senior/product-minded engineers who care about durable code quality.
 
 Avoid or down-rank sources that are:
@@ -111,6 +157,7 @@ Avoid or down-rank sources that are:
 - Focused on toy app generation without maintenance or production concerns.
 - Unwilling to discuss failure modes.
 - Pure model-release commentary unless it changes the workflow.
+- Blind to classic failure modes: second-system rewrites, Goodharted metrics, leaky abstractions, clever code that is hard to debug, or unreviewable changes.
 
 ## Useful Search Templates
 
