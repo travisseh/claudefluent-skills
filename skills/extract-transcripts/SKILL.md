@@ -43,8 +43,8 @@ Invoke with specific instructions about what transcripts to extract:
 
 **Participants:**
 - Name search: "Jackson Call", "Kole Minnoch", etc.
-- "with external participants" (non-exampleco.com)
-- "internal only" (exampleco.com only)
+- "with external participants" (non-boostly.com)
+- "internal only" (boostly.com only)
 
 **Duration:**
 - "over X minutes"
