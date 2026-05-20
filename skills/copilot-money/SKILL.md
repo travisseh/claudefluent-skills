@@ -1,11 +1,11 @@
 ---
 name: copilot-money
-description: Log into Copilot Money, export transactions, review spending data, find uncategorized transactions, and categorize or ask the user for clarification using Gmail magic-link login and CSV transaction exports.
+description: Log into Copilot Money, export transactions, review spending data, find uncategorized transactions, and categorize or ask Travisse for clarification using Gmail magic-link login and CSV transaction exports.
 ---
 
 # Copilot Money
 
-Use this when the user asks to inspect Copilot Money, pull transactions, review categories, find uncategorized items, analyze spending, or categorize new transactions.
+Use this when Travisse asks to inspect Copilot Money, pull transactions, review categories, find uncategorized items, analyze spending, or categorize new transactions.
 
 ## Login
 
@@ -19,7 +19,7 @@ Typical flow:
 
 1. Open Copilot in browser automation.
 2. Click `Continue with email`.
-3. Use `userh@gmail.com`.
+3. Use `travisseh@gmail.com`.
 4. Read the magic-link email with the local Gmail CLI.
 5. Navigate to the `https://auth.copilot.money/__/auth/action?...` link.
 
@@ -38,7 +38,7 @@ After login:
 
 1. Go to `https://app.copilot.money/transactions`.
 2. Click `Download transactions`.
-3. The CSV lands in `~/Downloads/transactions*.csv`.
+3. The CSV lands in `/Users/you/Downloads/transactions*.csv`.
 4. Use the newest matching file unless the user points to another export.
 
 CSV fields observed:
@@ -56,7 +56,7 @@ For a date range:
 ```python
 import csv
 rows = []
-with open("~/Downloads/transactions (2).csv", newline="", encoding="utf-8-sig") as f:
+with open("/Users/you/Downloads/transactions (2).csv", newline="", encoding="utf-8-sig") as f:
     for row in csv.DictReader(f):
         if "2024-01-01" <= row["date"] <= "2024-12-31" and row["excluded"] == "false":
             row["amt"] = float(row["amount"])
@@ -75,7 +75,7 @@ Common filters:
 Default behavior:
 
 - Make obvious category suggestions from merchant/name/note/category history.
-- Do not silently mutate Copilot categories unless the user explicitly asks to apply changes.
+- Do not silently mutate Copilot categories unless Travisse explicitly asks to apply changes.
 - If ambiguous, ask for clarification with a short list of transactions and candidate categories.
 - For recurring obvious merchants, state the pattern and ask once before bulk-applying.
 
@@ -99,7 +99,7 @@ For a recurring review, produce:
 
 1. Count of new/posted transactions reviewed.
 2. Transactions confidently categorizable, grouped by proposed category.
-3. Ambiguous transactions needing the user.
+3. Ambiguous transactions needing Travisse.
 4. Any suspicious duplicates, reversals, or large uncategorized items.
 
 Keep it short. Ask clarification only for transactions where the answer changes downstream reporting.
