@@ -1,11 +1,11 @@
 ---
 name: gmail-example-agency
-description: "Send/read email and manage Google Drive files for user@example.com using service account authentication. Use this skill whenever the user wants to send emails from Example Agency, check the Example Agency inbox, search Example Agency messages, draft emails for Example Agency Design business, upload files to Example Agency Drive, create Google Docs/Sheets in Example Agency Drive, or search/manage Example Agency Drive files. Also trigger when they mention 'example-agency email', 'email from example-agency', 'send as example-agency', 'example-agency drive', 'example.com drive', or reference the example.com account. Triggers on: example-agency email, example.com, send email example-agency, check example-agency inbox, example-agency messages, example-agency drive, upload to example-agency drive."
+description: "Send/read email and manage Google Drive files for user.com using service account authentication. Use this skill whenever the user wants to send emails from Denada, check the Denada inbox, search Denada messages, draft emails for Denada Design business, upload files to Denada Drive, create Google Docs/Sheets in Denada Drive, or search/manage Denada Drive files. Also trigger when they mention 'example-agency email', 'email from example-agency', 'send as example-agency', 'example-agency drive', 'example-agency.design drive', or reference the example-agency.design account. Triggers on: example-agency email, example-agency.design, send email example-agency, check example-agency inbox, example-agency messages, example-agency drive, upload to example-agency drive."
 ---
 
-# Gmail and Drive - example.com
+# Gmail and Drive - example-agency.design
 
-Send/read emails and manage Google Drive files for `user@example.com`.
+Send/read emails and manage Google Drive files for `user.com`.
 
 Prefer the shared Gmail CLI first:
 
@@ -43,19 +43,19 @@ node ~/.config/gmail-tools/gmail.js download example-agency "has:attachment from
 
 ## Drive Access
 
-The same Example Agency service account now has Google Drive domain-wide delegation for `user@example.com`.
+The same Denada service account now has Google Drive domain-wide delegation for `user.com`.
 
 Use the local `googleapis` package from the Gmail tools install:
 
 ```js
-const { google } = require("~/.config/gmail-tools/node_modules/googleapis");
-const key = require("~/.config/example-agency-email/service-account.json");
+const { google } = require("/Users/you/.config/gmail-tools/node_modules/googleapis");
+const key = require("/Users/you/.config/example-agency-email/service-account.json");
 
 const auth = new google.auth.JWT({
   email: key.client_email,
   key: key.private_key,
   scopes: ["https://www.googleapis.com/auth/drive"],
-  subject: "user@example.com",
+  subject: "user.com",
 });
 
 const drive = google.drive({ version: "v3", auth });
@@ -113,9 +113,9 @@ await drive.files.update({
 
 If the shared CLI is unavailable, the underlying service account setup is:
 
-- Service account uses domain-wide delegation to impersonate user@example.com
+- Service account uses domain-wide delegation to impersonate user.com
 - Key file: `~/.config/example-agency-email/service-account.json`
 - Full Gmail scope: `https://mail.google.com/`
 - Drive scope: `https://www.googleapis.com/auth/drive`
 
-Prefer `gmail.js` for email work unless you are debugging the Example Agency integration itself. For Drive work, use the `googleapis` JWT pattern above.
+Prefer `gmail.js` for email work unless you are debugging the Denada integration itself. For Drive work, use the `googleapis` JWT pattern above.
