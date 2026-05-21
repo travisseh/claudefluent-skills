@@ -1,33 +1,26 @@
 ---
 name: groupme
-description: Read Travisse's configured GroupMe groups and optionally post as Travisse using the repo-local GroupMe helper. Use when checking HF2 ward, bishopric, YM, YW, EQ, or GroupMe messages, summarizing recent GroupMe activity, or drafting/sending an approved GroupMe message.
+description: Read configured GroupMe groups and optionally post through an approved local GroupMe helper. Use when checking organization messages, summarizing recent GroupMe activity, or drafting/sending an approved GroupMe message.
 ---
 
 # GroupMe
 
-Use the repo-local helper in `/Users/you/Programming/personal-master/personal`.
+Use the repo-local helper from the user's project checkout.
 
 ## Scope
 
-This skill uses Travisse's GroupMe access token from the repo `.env`, so API actions happen as Travisse Hansen.
+This skill uses the user's GroupMe access token from the repo `.env`, so API actions happen as the authenticated user.
 
-Configured ward/bishopric groups are stored in:
+Configured groups are stored in:
 
-- `GROUPME_WARD_GROUP_IDS` - all configured read groups
-- `GROUPME_BISHOPRIC_GROUP_ID` - default send/read target for the bishopric group
+- `GROUPME_GROUP_IDS` - all configured read groups
+- `GROUPME_DEFAULT_GROUP_ID` - default send/read target
 
-Current configured groups:
-
-- `HF 2nd Ward YM`
-- `Young Women HF2`
-- `Bishop's and YW President's`
-- `HF Wards YM Leaders`
-- `HF2 EQ`
-- `2nd Ward Young Men Leaders`
+Do not include real group names, IDs, member names, or private organization context in the public skill.
 
 ## Commands
 
-Run from `/Users/you/Programming/personal-master/personal`.
+Run from the user's project checkout.
 
 List available groups:
 
@@ -35,29 +28,29 @@ List available groups:
 npm run groupme -- groups
 ```
 
-Read recent messages across configured ward groups:
+Read recent messages across configured groups:
 
 ```bash
-npm run groupme -- ward-messages 10
+npm run groupme -- group-messages 10
 ```
 
 Read one group by id:
 
 ```bash
-npm run groupme -- messages "$GROUPME_BISHOPRIC_GROUP_ID" 20
+npm run groupme -- messages "$GROUPME_DEFAULT_GROUP_ID" 20
 ```
 
-Post as Travisse to a specific group:
+Post as the authenticated user to a specific group:
 
 ```bash
-npm run groupme -- post "$GROUPME_BISHOPRIC_GROUP_ID" "message text"
+npm run groupme -- post "$GROUPME_DEFAULT_GROUP_ID" "message text"
 ```
 
 ## Workflow
 
 For read requests:
 
-1. Use `npm run groupme -- ward-messages 10` by default.
+1. Use `npm run groupme -- group-messages 10` by default, or the equivalent command in the local helper.
 2. Increase the limit only when the user asks for more history or the context is incomplete.
 3. Inspect the `attachments` array as well as `text`. Image attachments include a direct `url`; file attachments include a `file_id`.
 4. Summarize by group, sender, timestamp, attachments, and action needed.
@@ -72,5 +65,5 @@ For send requests:
 ## Safety
 
 - Never print or expose `GROUPME_ACCESS_TOKEN`.
-- Do not create or use GroupMe bots unless the user explicitly asks to switch away from posting as Travisse.
-- Treat broad GroupMe reads as sensitive church context; keep summaries concise and operational.
+- Do not create or use GroupMe bots unless the user explicitly asks to switch away from posting as the authenticated user.
+- Treat broad GroupMe reads as sensitive private organization context; keep summaries concise and operational.
