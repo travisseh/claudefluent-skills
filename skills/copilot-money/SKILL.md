@@ -70,6 +70,20 @@ Common filters:
 - Internal transfers: `type == "internal transfer"`; do not categorize as spending without intent.
 - Pending: decide whether to include based on the user request.
 
+## Spend Breakdown
+
+When reviewing a time period or a recurring daily export, include a spend breakdown for the same analyzed period in addition to category cleanup.
+
+Use the reviewed transaction set, not the whole export, unless Travisse asks for a broader period. If comparing against a prior export, this is the new/since-prior transaction set plus relevant pending-to-posted transitions you explicitly reviewed. If prior-run state is unavailable, use the last-24-hours fallback set.
+
+Breakdown rules:
+
+- Include regular expense transactions where `excluded == "false"` and `amount` is positive.
+- Exclude `type == "internal transfer"`, credit card payments, reimbursements, income, refunds/negative amounts, and ambiguous Venmo/person payments unless they are already categorized as spending.
+- Separate pending and posted if both appear and that distinction matters; otherwise state the combined reviewed-period total.
+- Group by `category` first, then call out the largest merchants or unusual charges if useful.
+- Mention skipped non-spend separately so the total is easy to trust.
+
 ## Categorization Rules
 
 Default behavior:
@@ -98,8 +112,9 @@ Do not over-classify:
 For a recurring review, produce:
 
 1. Count of new/posted transactions reviewed.
-2. Transactions confidently categorizable, grouped by proposed category.
-3. Ambiguous transactions needing Travisse.
-4. Any suspicious duplicates, reversals, or large uncategorized items.
+2. Total reviewed-period spend and category breakdown, using the spend breakdown rules above.
+3. Transactions confidently categorizable, grouped by proposed category.
+4. Ambiguous transactions needing Travisse.
+5. Any suspicious duplicates, reversals, or large uncategorized items.
 
 Keep it short. Ask clarification only for transactions where the answer changes downstream reporting.
