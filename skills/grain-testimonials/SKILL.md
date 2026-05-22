@@ -1,6 +1,6 @@
 ---
 name: grain-testimonials
-description: "Extract potential testimonials from Grain recording pages and save them to ClaudeFluent participant records in Convex. Use when Travisse wants to pull testimonials, extract Grain feedback, or save participant quotes after a ClaudeFluent session."
+description: "Extract potential testimonials from Grain recording pages and save them to ClaudeFluent participant records in Convex. Use when the user wants to pull testimonials, extract Grain feedback, or save participant quotes after a ClaudeFluent session."
 ---
 
 # Grain Testimonials Extractor
@@ -9,7 +9,7 @@ Extract potential testimonials from Grain recording pages and save them to Claud
 
 ## When to use
 - After a ClaudeFluent course session, when Grain recording links are available
-- When Travisse says "pull testimonials" or "extract testimonials"
+- When the user says "pull testimonials" or "extract testimonials"
 
 ## Prerequisites
 - Grain share URL(s) for the session
@@ -26,7 +26,7 @@ Use `$dev-browser` to open the Grain share URL. The page is fully client-side re
 3. Click the **Summary** tab if visible (it has structured, speaker-attributed notes)
 4. Extract the relevant page text using locators, `textContent`, or `snapshotForAI`
 
-Focus on the **"Course Feedback and Next Steps"** section — this is where participants share what they found most useful (Travisse asks this at the end of every session).
+Focus on the **"Course Feedback and Next Steps"** section — this is where participants share what they found most useful (the user asks this at the end of every session).
 
 ### Step 2: Identify participants for the session
 
@@ -39,7 +39,7 @@ curl -s "https://polite-toad-76.convex.cloud/api/query" \
 
 ### Step 3: Extract testimonial quotes
 
-From the Grain page text, identify quotes or paraphrased statements from **participants only** (NOT Travisse Hansen, the instructor). Focus on:
+From the Grain page text, identify quotes or paraphrased statements from **participants only** (NOT the user, the instructor). Focus on:
 - What they found most useful or valuable
 - Positive feedback about the course, exercises, or teaching
 - Specific outcomes or "aha moments"
@@ -77,7 +77,7 @@ Use `Date.now()` equivalent for `extractedAt` (current timestamp in milliseconds
 
 ### Step 5: Report results
 
-Tell Travisse how many testimonials were found and saved, grouped by participant.
+Tell the user how many testimonials were found and saved, grouped by participant.
 
 ## Schema reference
 
@@ -95,4 +95,4 @@ potentialTestimonials: optional array of {
 - The last Grain link for a session is typically the second/final class — this has the best feedback content
 - If there are 2 Grain links (Part 1 and Part 2), focus on Part 2
 - The Summary tab is usually sufficient — you rarely need the full Transcript tab
-- Skip anything Travisse says — only extract participant quotes
+- Skip anything the user says — only extract participant quotes
