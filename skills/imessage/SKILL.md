@@ -1,6 +1,6 @@
 ---
 name: imessage
-description: "Read and send iMessages using custom SQLite-based tools (more reliable than MCP). Use this skill whenever Travisse wants to check unread texts, send a text/iMessage, search contacts, read message history, look up a conversation, or find a specific message. Also trigger when he says 'text', 'message', 'iMessage', 'check my texts', 'send a text to', 'what did X say', or references any messaging conversation. Triggers on: iMessage, text, send text, check texts, unread messages, message history, send a message to, what did they say, search messages, contacts."
+description: "Read and send iMessages using custom SQLite-based tools (more reliable than MCP). Use this skill whenever the user wants to check unread texts, send a text/iMessage, search contacts, read message history, look up a conversation, or find a specific message. Also trigger when he says 'text', 'message', 'iMessage', 'check my texts', 'send a text to', 'what did X say', or references any messaging conversation. Triggers on: iMessage, text, send text, check texts, unread messages, message history, send a message to, what did they say, search messages, contacts."
 ---
 
 # iMessage Tools
@@ -27,7 +27,7 @@ node ~/.config/imessage-tools/imessage.js find-contact 8015551234
 
 # Get recent messages from a contact or group chat
 node ~/.config/imessage-tools/imessage.js messages "Stephanie Hansen" 20
-node ~/.config/imessage-tools/imessage.js messages "Bishopric-SM" 50
+node ~/.config/imessage-tools/imessage.js messages "Leadership-SM" 50
 node ~/.config/imessage-tools/imessage.js messages +18015551234 20
 
 # List all group chats
@@ -41,7 +41,7 @@ node ~/.config/imessage-tools/imessage.js send "+18015551234" "Hey, running late
 
 1. **Find the recipient's phone number:**
    ```bash
-   node ~/.config/imessage-tools/imessage.js search-contacts "Steph"
+   node ~/.config/imessage-tools/imessage.js search-contacts "a family member"
    ```
 
 2. **Send the message using their phone number:**
@@ -53,7 +53,7 @@ node ~/.config/imessage-tools/imessage.js send "+18015551234" "Hey, running late
 
 ## Writing Style
 
-When drafting messages for Travisse, use `$travisse-writing-style` for tone and patterns:
+When drafting messages for the user, use `$travisse-writing-style` for tone and patterns:
 - Default opener: "Hey" or "Hey [Name]"
 - Warm but direct
 - Minimal emoji usage
