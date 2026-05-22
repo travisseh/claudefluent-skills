@@ -1,6 +1,6 @@
 ---
 name: inbox-watch
-description: Hourly email watch. Scans unread Gmail across personal/exampleco/gmr/example-agency, marks noise as read, drafts threaded replies to anything important needing a response, and pings Telegram if a real human is waiting on the user. Use when running an hourly routine, when the user says "watch my inbox", "check email and draft replies", "see if anyone important emailed", or any unattended/scheduled email triage. Designed to be safe to run on a recurring schedule — does NOT send anything, drafts only, and dedupes via state file so it never double-drafts.
+description: Hourly email watch. Scans unread Gmail across personal/boostly/gmr/example-agency, marks noise as read, drafts threaded replies to anything important needing a response, and pings Telegram if a real human is waiting on the user. Use when running an hourly routine, when the user says "watch my inbox", "check email and draft replies", "see if anyone important emailed", or any unattended/scheduled email triage. Designed to be safe to run on a recurring schedule — does NOT send anything, drafts only, and dedupes via state file so it never double-drafts.
 ---
 
 # Inbox Watch
@@ -24,7 +24,7 @@ Unattended email triage. Designed to run hourly via a routine but also safe to r
 
 ## State
 
-Path: `~/.claude/state/inbox-watch/handled.json`
+Path: `/Users/you/.claude/state/inbox-watch/handled.json`
 
 Format:
 ```json
@@ -33,7 +33,7 @@ Format:
     {
       "messageId": "abc123",
       "threadId": "thread-abc",
-      "account": "exampleco",
+      "account": "boostly",
       "draftId": "draft-xyz",
       "from": "person@example.com",
       "subject": "...",
@@ -51,8 +51,8 @@ If the file doesn't exist, treat as empty and create it after the run.
 
 ### 1. Load state
 ```bash
-mkdir -p ~/.claude/state/inbox-watch
-test -f ~/.claude/state/inbox-watch/handled.json || echo '{"handled":[]}' > ~/.claude/state/inbox-watch/handled.json
+mkdir -p /Users/you/.claude/state/inbox-watch
+test -f /Users/you/.claude/state/inbox-watch/handled.json || echo '{"handled":[]}' > /Users/you/.claude/state/inbox-watch/handled.json
 ```
 
 Read the JSON. Build a Set of `messageId` values already handled in the last 7 days. Drop entries older than 7 days.
@@ -63,7 +63,7 @@ Only look at the last 5 days. This skill runs hourly so older unread emails are 
 
 ```bash
 node ~/.config/gmail-tools/gmail.js search personal "is:unread newer_than:5d" 30
-node ~/.config/gmail-tools/gmail.js search exampleco "is:unread newer_than:5d" 30
+node ~/.config/gmail-tools/gmail.js search boostly "is:unread newer_than:5d" 30
 node ~/.config/gmail-tools/gmail.js search gmr "is:unread newer_than:5d" 30
 node ~/.config/gmail-tools/gmail.js search example-agency "is:unread newer_than:5d" 30
 ```
@@ -81,7 +81,7 @@ For every message, decide: NOISE or NEEDS-ATTENTION.
 - Transactional: receipts, password resets, shipping notifications, payment confirmations
 - Anything from a no-reply / noreply / do-not-reply address
 - Doctor Kiltz / political fundraising / generic SaaS pitches the user never engaged with
-- Gusto/payroll for the dormant Example Agency LLC entity (per chief-of-staff insights — always ignore)
+- Gusto/payroll for the dormant Denada LLC entity (per chief-of-staff insights — always ignore)
 
 **NEEDS-ATTENTION (draft a reply, notify the user):**
 - Real human sender (named, real domain, not a no-reply)
@@ -89,7 +89,7 @@ For every message, decide: NOISE or NEEDS-ATTENTION.
 - Asks a question, requests action, expects a reply, or someone is blocked on him
 - Sender is family, colleague, student, customer, church member, partner, investor, or anyone he has an existing relationship with
 
-When in doubt: lean toward NEEDS-ATTENTION. False-positive notifications are cheap; missing a real email is expensive.
+When in doubt: lean toorganization NEEDS-ATTENTION. False-positive notifications are cheap; missing a real email is expensive.
 
 ### 4. Skip drafted-already
 
@@ -122,7 +122,7 @@ For each new (not-already-drafted, not-already-replied) NEEDS-ATTENTION message:
    ```
    (Or fall back to a `from:sender subject:topic` query.)
 
-2. Compose a reply in the user's voice. Reference `~/.claude/skills/user-writing-style/SKILL.md` and `~/.claude/CLAUDE.md` for tone:
+2. Compose a reply in the user's voice. Reference `~/.claude/skills/travisse-writing-style/SKILL.md` and `~/.claude/CLAUDE.md` for tone:
    - "Hey [first name]" opener for people he knows
    - Warm but direct, concise, minimal emoji
    - Adjust formality: casual for family, warm-professional for church, direct for work
@@ -151,7 +151,7 @@ For each new (not-already-drafted, not-already-replied) NEEDS-ATTENTION message:
 
 ### 8. Persist state
 
-Write the updated state back to `~/.claude/state/inbox-watch/handled.json` (pruned to last 7 days + any new entries).
+Write the updated state back to `/Users/you/.claude/state/inbox-watch/handled.json` (pruned to last 7 days + any new entries).
 
 ### 9. Telegram notification (only if there's something to say)
 
@@ -163,7 +163,7 @@ Otherwise, format:
 📬 Inbox Watch — <Day> <HH:MM> MT
 
 NEW (drafts ready to review):
-- [exampleco] Brixton: Q2 roadmap question
+- [boostly] Brixton: Q2 roadmap question
 - [example-agency] Sarah Lin: ClassDojo training scope
 
 STILL PENDING (drafted earlier, you haven't sent yet):
@@ -176,7 +176,7 @@ Auth issues: gmr (token expired)
 
 Send via:
 ```bash
-bash ~/.claude/skills/cron/lib/telegram-self.sh personal /tmp/inbox-watch-msg.txt
+bash /Users/you/.claude/skills/cron/lib/telegram-self.sh personal /tmp/inbox-watch-msg.txt
 ```
 
 (Default bot: `personal`. The routine prompt may override by passing a different bot name.)
