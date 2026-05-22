@@ -1,6 +1,6 @@
 ---
 name: garments
-description: "Order men's garments from store.churchofjesuschrist.org using dev-browser browser automation. Use when Travisse asks to order garments, restock garments, or buy temple clothing."
+description: "Order men's garments from store.churchofjesuschrist.org using dev-browser browser automation. Use when the user asks to order garments, restock garments, or buy temple clothing."
 ---
 
 # Garment Ordering
@@ -13,7 +13,7 @@ Order men's garments from the Church of Jesus Christ online store using `$dev-br
 https://store.churchofjesuschrist.org/top-cat/clothing/men-s-clothing/men-s-garments/5637160344.c
 ```
 
-## Travisse's Garment Specs
+## the user's Garment Specs
 
 ### Tops
 - **Style:** Stretch Cotton Lower Crew
@@ -47,11 +47,11 @@ Use `dev-browser --connect` and a named page such as `browser.getPage("lds-store
 1. **NEVER complete a purchase without showing the total and getting explicit approval**
 2. **NEVER enter payment info** — only use saved payment methods
 3. **Show cart contents and total before checkout**
-4. If login is required, tell Travisse — don't try to enter credentials
+4. If login is required, tell the user — don't try to enter credentials
 
 ## Tips
 
-- The store may require an LDS account login — if redirected to sign in, pause and tell Travisse
+- The store may require an LDS account login — if redirected to sign in, pause and tell the user
 - Products may have multiple size/length/style selectors — screenshot each step to confirm correct options
 - Prefer Playwright locators over coordinate clicking
 - Always screenshot before and after adding to cart to confirm items
