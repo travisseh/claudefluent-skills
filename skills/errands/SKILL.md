@@ -1,6 +1,6 @@
 ---
 name: errands
-description: "Run virtual errands using dev-browser browser automation — shop Amazon, check shipping/tracking, place Instacart/Walmart/DoorDash orders, and handle other browser-based tasks. Use when Travisse asks to buy something, track a package, order groceries, find a product, compare prices, or do anything that requires browsing the web on his behalf."
+description: "Run virtual errands using dev-browser browser automation — shop Amazon, check shipping/tracking, place Instacart/Walmart/DoorDash orders, and handle other browser-based tasks. Use when the user asks to buy something, track a package, order groceries, find a product, compare prices, or do anything that requires browsing the web on his behalf."
 ---
 
 # Virtual Errands
@@ -12,10 +12,10 @@ Use `dev-browser --connect` for live/authenticated sites and reuse named pages p
 ## Safety Rules
 
 1. **NEVER complete a purchase without explicit approval.** Always pause at the final checkout screen, show the total, and ask "Should I place this order?"
-2. **NEVER enter payment info.** Rely on saved payment methods in the browser. If no saved payment, tell Travisse.
+2. **NEVER enter payment info.** Rely on saved payment methods in the browser. If no saved payment, tell the user.
 3. **NEVER change account settings, passwords, or subscriptions** unless explicitly asked.
 4. **Show prices and totals** before any purchase decision.
-5. **If a CAPTCHA or 2FA appears**, tell Travisse — don't try to solve it.
+5. **If a CAPTCHA or 2FA appears**, tell the user — don't try to solve it.
 
 ## Workflows
 
@@ -25,7 +25,7 @@ Use `dev-browser --connect` for live/authenticated sites and reuse named pages p
 2. Open `https://www.amazon.com` or the direct product URL
 3. Use Playwright locators to search, inspect results, and open product pages
 7. For each product, extract: title, price, rating, review count, Prime eligibility, delivery date
-8. Present comparison to Travisse
+8. Present comparison to the user
 9. If approved, add to cart with locators and clicks
 10. Navigate to `https://www.amazon.com/gp/cart/view.html`
 11. **STOP and show cart total. Ask for approval before proceeding.**
@@ -113,4 +113,4 @@ When comparing products or options, present as:
 - Use Playwright locators instead of brittle coordinates when possible
 - If a page is slow to load, wait explicitly or retry after a moment
 - For long shopping lists, add items one at a time and confirm the cart periodically
-- If logged out of a service, tell Travisse rather than trying to log in
+- If logged out of a service, tell the user rather than trying to log in
