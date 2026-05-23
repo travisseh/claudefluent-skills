@@ -90,13 +90,13 @@ Detailed reference for each marketing skill. The main SKILL.md has a quick-refer
 
 ---
 
-## 5. Travisse Writing Style (`$travisse-writing-style`)
+## 5. the user Writing Style (`$travisse-writing-style`)
 
 **Location:** `~/.codex/skills/travisse-writing-style/SKILL.md`
 **Scope:** Project (personal repo)
 
 **What it does:**
-- Handles LinkedIn posts, articles, emails, and other writing in Travisse's voice
+- Handles LinkedIn posts, articles, emails, and other writing in the user's voice
 - Includes the LinkedIn-specific patterns and long-form rules
 - Acts as the single source of truth for hooks, structure, tone, and formatting
 - Primary organic distribution channel for ClaudeFluent

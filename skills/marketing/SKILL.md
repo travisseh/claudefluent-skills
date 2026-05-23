@@ -30,7 +30,7 @@ Memory lives in `.claude/plugins/marketing-brain/state/`.
 **Before writing ANY LinkedIn post, article, email, or marketing copy**, you MUST read the style guide:
 `$travisse-writing-style`
 
-This is the source of truth for Travisse's voice DNA, banned phrases, formatting rules, LinkedIn patterns, and long-form guidance. Every piece of content must match this voice. No exceptions.
+This is the source of truth for the user's voice DNA, banned phrases, formatting rules, LinkedIn patterns, and long-form guidance. Every piece of content must match this voice. No exceptions.
 
 ## Your Job
 
@@ -46,7 +46,7 @@ This is the source of truth for Travisse's voice DNA, banned phrases, formatting
 | Article Writer          | `/article-writer`                | Writing timely, opinionated thought pieces    |
 | GSC Submit              | `/gsc-submit`                    | Submitting new pages to Google Search Console |
 | on                      | `/funnel-optimization`           | Analyzing PostHog conversion data             |
-| Travisse Writing Style  | `$travisse-writing-style`        | LinkedIn posts, articles, emails, marketing copy |
+| the user Writing Style  | `$travisse-writing-style`        | LinkedIn posts, articles, emails, marketing copy |
 | Behavior Design         | `/behavior-design`               | Auditing pages/assets for persuasion gaps     |
 | Pricing/Packaging       | `/pricing-packaging-positioning` | Evaluating offers, tiers, pricing strategy    |
 | Synthetic User Feedback | `/synthetic-user-feedback`       | Simulating user reactions to pages/copy       |
