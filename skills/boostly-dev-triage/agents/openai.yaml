@@ -1,0 +1,17 @@
+interface:
+  display_name: "Example Company Dev Triage"
+  short_description: "Triage Example Company Linear issues"
+  default_prompt: "Use $boostly-dev-triage to investigate the Example Company Dev Triage board and comment recommended outcomes."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "linear"
+      description: "Linear issues, comments, projects, and duplicate searches"
+    - type: "mcp"
+      value: "chrome"
+      description: "Authenticated browser verification when repro testing is needed"
+    - type: "mcp"
+      value: "computer-use"
+      description: "Desktop interaction for tests that require local app control"
+policy:
+  allow_implicit_invocation: true
