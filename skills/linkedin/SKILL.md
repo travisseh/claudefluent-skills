@@ -24,9 +24,9 @@ Use `$dev-browser` for LinkedIn messages and notifications.
 ## Writing Style
 
 Before drafting ANY LinkedIn message or reply:
-- Read `$user-writing-style` and use it as the only source of truth
+- Read `$travisse-writing-style` and use it as the only source of truth
 - Apply the `### LINKEDIN` section for hooks, structure, and formatting
-- Apply the ExampleCo safety check before proposing anything public-facing
+- Apply the Example Company safety check before proposing anything public-facing
 - Keep DMs warm, direct, and concise
 - Match the user's casual-professional style
 
@@ -53,4 +53,4 @@ After scanning messages, present:
 - Prefer `browser.listPages()` if you need to inspect existing tabs
 - LinkedIn may require being logged in — if you see a login page, tell the user
 - Don't send messages without explicit approval
-- For LinkedIn posts/content creation, use `$user-writing-style`
+- For LinkedIn posts/content creation, use `$travisse-writing-style`
