@@ -36,5 +36,5 @@ Token is stored in local `.claude.json`. Expires periodically — if you get aut
 
 - Search broadly first (e.g., "product engineers") then drill into specific episodes
 - Many episodes have both a guest interview AND Lenny's commentary — both are valuable
-- Cross-reference findings with the product-brain plugin state files for ExampleCo-specific context
+- Cross-reference findings with the product-brain plugin state files for Example Company-specific context
 - When extracting insights for proposals, always note the episode and guest for attribution
