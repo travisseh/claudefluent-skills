@@ -398,8 +398,8 @@ const server = createServer(async (req, res) => {
       let cmd: string;
       if (screenshots && screenshots.length > 0) {
         const filePaths = screenshots.map((s: string) => join(SCREENSHOTS_DIR, s)).join(" ");
-        cmd = "node ~/.config/slack-tools/slack.js upload exampleco " + channel + " " + filePaths + " --message \"$(cat '" + tmpFile + "')\"";
-      } else { cmd = "node ~/.config/slack-tools/slack.js send exampleco " + channel + " \"$(cat '" + tmpFile + "')\""; }
+        cmd = "node ~/.config/slack-tools/slack.js upload boostly " + channel + " " + filePaths + " --message \"$(cat '" + tmpFile + "')\"";
+      } else { cmd = "node ~/.config/slack-tools/slack.js send boostly " + channel + " \"$(cat '" + tmpFile + "')\""; }
       const result = execSync(cmd, { timeout: 15000, shell: "/bin/bash" }).toString();
       try { unlinkSync(tmpFile); } catch {}
       res.writeHead(200, {"Content-Type":"application/json"}); res.end(JSON.stringify({ success: true, result: JSON.parse(result) }));

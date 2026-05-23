@@ -11,11 +11,11 @@ Take a feature release and produce Slack announcements that help CS activate and
 
 ### Step 1: Gather Context (ask until you have enough)
 
-Start with whatever the user gives you — even a single sentence is fine. Then ask targeted follow-up questions using AskUserQuestion until you can confidently write for both audiences. Fill in what you can from the ExampleCo codebase, git history, or product context before asking.
+Start with whatever the user gives you — even a single sentence is fine. Then ask targeted follow-up questions using AskUserQuestion until you can confidently write for both audiences. Fill in what you can from the Example Company codebase, git history, or product context before asking.
 
-**Where to look in the codebase:** The ExampleCo v2 app lives at `~/Programming/exampleco`. Before searching, always pull latest main:
+**Where to look in the codebase:** The Example Company v2 app lives at `/Users/you/Programming/boostly`. Before searching, always pull latest main:
 ```bash
-git -C ~/Programming/exampleco fetch origin main && git -C ~/Programming/exampleco reset --hard origin/main
+git -C /Users/you/Programming/boostly fetch origin main && git -C /Users/you/Programming/boostly reset --hard origin/main
 ```
 Search routes, components, and schemas there to understand how features work, what the UI looks like, and what the setup steps are. This is the source of truth for how things work in-product.
 
@@ -49,7 +49,7 @@ Keep the questions conversational and batched (2-3 at a time max, not a wall of 
 Before drafting, create a screenshot package that tells the feature story clearly. Do this proactively unless the user explicitly says he only wants copy.
 
 1. **Seed a compelling local demo**
-   - Use the ExampleCo app at `~/Programming/exampleco`.
+   - Use the Example Company app at `/Users/you/Programming/boostly`.
    - Pull latest main first, then get the app running locally.
    - Prefer the repo's normal seed flow (`make setup-db`, `make seed`, or `npm run seed`) when available.
    - If the default seed data makes the feature look empty, weak, or confusing, add local-only demo rows that tell a better story:
@@ -73,7 +73,7 @@ Before drafting, create a screenshot package that tells the feature story clearl
    - Put launch-relevant screenshots in `.claude/skills/internal-marketing/screenshots/` with descriptive filenames. Screenshots accumulate there, so never delete old launches.
 
 3. **Add reusable assets to Armory**
-   - The Armory repo lives at `~/Programming/armory`.
+   - The Armory repo lives at `/Users/you/Programming/armory`.
    - Add the screenshots under the Armory Visual Assets area, usually as a feature folder such as `visual-assets/<FeatureName>/`.
    - Update Armory's `index.html` so Visual Assets shows a folder/card for the feature, and clicking into it reveals the screenshots.
    - Verify locally with a static server and browser automation that:
@@ -223,7 +223,7 @@ Once the user sends from the UI, confirm the server can be killed. No further ac
 
 ## Tone and Voice
 
-- **Always run messages through `/user-writing-style` before previewing.** The messages should sound like the user wrote them, not a press release.
+- **Always run messages through `/travisse-writing-style` before previewing.** The messages should sound like the user wrote them, not a press release.
 - Use :rocket: emoji on the headline. No other emojis.
 - Write for teammates, not press releases. Casual, direct, no buzzwords.
 - CS materials should feel like a helpful playbook — "here's exactly what to do."
@@ -234,13 +234,13 @@ Once the user sends from the UI, confirm the server can be killed. No further ac
 - **Don't add unsolicited sales advice** like "this isn't something to lead with" or "only mention this if..." — just give them the pitch and let them decide when to use it.
 - **CS setup steps should be concise and direct** — numbered steps with exact clicks, no extra explanation. If the feature was discussed in a team meeting (WAGMI, standup, etc.), reference it.
 
-## ExampleCo Context
+## Example Company Context
 
 Reference these when framing features:
 
 - **Core purpose**: Find new guests, turn them into regulars.
 - **Value delivery**: Turn guest touch-points into ongoing connection. Employ behavioral design to create profitable relationships. Overwhelm operators with competence. Orient on measurable outcomes.
-- **Current competitive frame**: ExampleCo vs Owner.com and SpotHopper — we differentiate through gamification, in-store physical touchpoints (tapcards/signage), and text-based engagement.
+- **Current competitive frame**: Example Company vs Owner.com and SpotHopper — we differentiate through gamification, in-store physical touchpoints (tapcards/signage), and text-based engagement.
 - **Product surface areas**: Texting/campaigns, TapCards, review management, SEO, signage, onboarding, websites (coming).
 
 ## Screenshots
@@ -256,6 +256,6 @@ The skill has a screenshots folder at `.claude/skills/internal-marketing/screens
 
 After sending, offer these if relevant (don't push them every time):
 
-- Save a battlecard to Notion using `/notion-exampleco`
+- Save a battlecard to Notion using `/notion-boostly`
 - Record a walkthrough using `/record-demo`
 - Generate sales validation questions to send to a rep for messaging feedback
