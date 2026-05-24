@@ -1,6 +1,6 @@
 ---
 name: add-cf-skills
-description: Publish an existing local skill to the public ClaudeFluent skills repo. Use when Travisse asks to share, publish, add, or upload a skill for ClaudeFluent students.
+description: Publish an existing local skill to the public ClaudeFluent skills repo. Use when the user asks to share, publish, add, or upload a skill for ClaudeFluent students.
 ---
 
 # Add ClaudeFluent Skills
@@ -24,8 +24,12 @@ The argument can be:
 ## What The Script Does
 
 - Resolves the source skill from common Claude and Codex skill roots.
-- Copies it into `/Users/you/Programming/claudefluent-skills/skills/<skill-name>` as the public staging copy.
+- Copies it into `/Users/you/Programming/claudefluent-skills/skills/<public-skill-name>` as the public staging copy.
 - Removes common junk and private artifacts from that copied public version.
+- Depersonalizes the copied public version before scanning or publishing:
+  - rewrites private names, emails, local paths, church/family/location context, and token-looking values
+  - maps company-specific public slugs such as `dev-triage` to generic names such as `dev-triage`
+  - replaces company/customer-specific language with generic product, support, or example-company language
 - Scans the copied public version for likely sensitive content.
 - Stages, commits, and pushes to `https://github.com/travisseh/claudefluent-skills`.
 
@@ -37,7 +41,7 @@ If the script prints `REVIEW_REQUIRED`, inspect and sanitize only the copied fil
 /Users/you/Programming/claudefluent-skills/skills/<skill-name>
 ```
 
-Do **not** sanitize or simplify the source skill in `~/.codex/skills`, `~/.claude/skills`, or the repo-local skill tree unless Travisse explicitly asks to change the source too.
+Do **not** sanitize or simplify the source skill in `~/.codex/skills`, `~/.claude/skills`, or the repo-local skill tree unless the user explicitly asks to change the source too.
 
 After reviewing the copied public version, rerun with:
 
