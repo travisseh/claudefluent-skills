@@ -82,7 +82,7 @@
 
 ## Persona 4: Sandra — VP of Customer Success, Series C SaaS
 
-- 44, VP of CS. Manages 18 CSMs and 2 team leads. Reports to CRO.
+- 44, VP of CS. Manages 18 support teammates and 2 team leads. Reports to CRO.
 - Not technical. Her edge is process design, retention strategy, executive relationships.
 - CEO pushing "AI efficiency" as a board-level initiative. Asked to present a plan for how CS will use AI to improve NRR without adding headcount.
 - Thinking both personally (how do I use this?) and organizationally (how do I roll this out?).
@@ -96,7 +96,7 @@
 
 **Language that converts:**
 - "Here's the ROI calculation for your board deck"
-- "Your CSMs can automate these 3 tasks this week"
+- "Your support teammates can automate these 3 tasks this week"
 - "No technical background needed"
 
 **Language that bounces:**
@@ -113,4 +113,4 @@
 - **Ashley:** "Your marketing team can build their own dashboards instead of waiting 6 weeks for engineering."
 - **Derek:** "I built a customer feedback analyzer in 2 hours that would've taken a contractor $3k and 2 weeks."
 - **Priya:** "Pull your own data, build your own prototypes. Stop opening Jira tickets for things you could do yourself."
-- **Sandra:** "Your CSMs can build health score automations that run every morning. Here's the ROI math."
+- **Sandra:** "Your support teammates can build health score automations that run every morning. Here's the ROI math."
