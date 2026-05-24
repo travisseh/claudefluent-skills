@@ -1,11 +1,11 @@
 ---
 name: copilot-money
-description: Log into Copilot Money, export transactions, review spending data, find uncategorized transactions, and suggest category cleanup using email magic-link login and CSV transaction exports.
+description: Log into Copilot Money, export transactions, review spending data, find uncategorized transactions, and categorize or ask the user for clarification using Gmail magic-link login and CSV transaction exports.
 ---
 
 # Copilot Money
 
-Use this when a user asks to inspect Copilot Money, pull transactions, review categories, find uncategorized items, analyze spending, or categorize new transactions.
+Use this when the user asks to inspect Copilot Money, pull transactions, review categories, find uncategorized items, analyze spending, or categorize new transactions.
 
 ## Login
 
@@ -19,15 +19,15 @@ Typical flow:
 
 1. Open Copilot in browser automation.
 2. Click `Continue with email`.
-3. Use the user's Copilot login email.
-4. Read the magic-link email with the user's approved email tool.
+3. Use `user@example.com`.
+4. Read the magic-link email with the local Gmail CLI.
 5. Navigate to the `https://auth.copilot.money/__/auth/action?...` link.
 
 Useful Gmail commands:
 
 ```bash
-node path/to/gmail-cli.js search personal "from:noreply-copilotmoney@copilot.money newer_than:10m" 5
-node path/to/gmail-cli.js read personal "from:noreply-copilotmoney@copilot.money subject:\"Sign in to Copilot Money\""
+node ~/.config/gmail-tools/gmail.js search personal "from:noreply-copilotmoney@copilot.money newer_than:10m" 5
+node ~/.config/gmail-tools/gmail.js read personal "from:noreply-copilotmoney@copilot.money subject:\"Sign in to Copilot Money\""
 ```
 
 If the CLI read output hides the link, fetch the raw Gmail message with `googleapis` and decode MIME parts.
@@ -37,7 +37,9 @@ If the CLI read output hides the link, fetch the raw Gmail message with `googlea
 After login:
 
 1. Go to `https://app.copilot.money/transactions`.
-2. Click `Download transactions`.
+2. Click the icon-only `Download transactions` button.
+   - The button has `aria-label="Download transactions"` and no visible text.
+   - In Playwright, use `page.getByRole("button", { name: "Download transactions" })` or `button[aria-label="Download transactions"]`.
 3. The CSV lands in `/Users/you/Downloads/transactions*.csv`.
 4. Use the newest matching file unless the user points to another export.
 
@@ -66,7 +68,7 @@ with open("/Users/you/Downloads/transactions (2).csv", newline="", encoding="utf
 Common filters:
 
 - Uncategorized: `category == ""` or category looks like `Other` and the merchant/note is specific enough to classify.
-- Needs review: tags or notes containing `review`, user-specific review markers, or category mismatch.
+- Needs review: tags or notes containing `review`, `steph review`, or category mismatch.
 - Internal transfers: `type == "internal transfer"`; do not categorize as spending without intent.
 - Pending: decide whether to include based on the user request.
 
@@ -75,6 +77,8 @@ Common filters:
 When reviewing a time period or a recurring daily export, include a spend breakdown for the same analyzed period in addition to category cleanup.
 
 Use the reviewed transaction set, not the whole export, unless the user asks for a broader period. If comparing against a prior export, this is the new/since-prior transaction set plus relevant pending-to-posted transitions you explicitly reviewed. If prior-run state is unavailable, use the last-24-hours fallback set.
+
+Always state the exact date/time window in plain English, for example `Reviewed spend from 2026-05-21 09:04 MDT through 2026-05-22 09:03 MDT` or `Posted transactions from the last 24 hours`.
 
 Breakdown rules:
 
@@ -93,11 +97,13 @@ Default behavior:
 - If ambiguous, ask for clarification with a short list of transactions and candidate categories.
 - For recurring obvious merchants, state the pattern and ask once before bulk-applying.
 
-High-confidence example patterns:
+High-confidence examples from prior usage:
 
-- Local utility, mortgage, HOA, and internet merchants often map to a specific property or household bucket.
-- Preserve account masks and notes only long enough to distinguish between similar recurring bills.
-- If a merchant can belong to multiple homes, rentals, businesses, or family members, ask before applying a category.
+- Wasatch Broadband -> Example City A internet / rental internet when reviewing 2024 rentals.
+- Roundpoint Mtg -> Example City A mortgage if tied to the Example City A rental account.
+- Example City B City / Dominion account ending `2402` / UWM / Pioneer HOA -> Example City B rental.
+- Example City A City / Dominion account ending `9901` / The Exchange HOA / Wasatch Broadband -> Example City A rental.
+- Red Rock Property, Dixie Power, City Of St George, Centurylink, Quantum Fiber -> Example City C; ignore when the user asks only about Example City B/Example City A.
 
 Do not over-classify:
 
@@ -110,9 +116,11 @@ Do not over-classify:
 For a recurring review, produce:
 
 1. Count of new/posted transactions reviewed.
-2. Total reviewed-period spend and category breakdown, using the spend breakdown rules above.
-3. Transactions confidently categorizable, grouped by proposed category.
-4. Ambiguous transactions needing the user.
-5. Any suspicious duplicates, reversals, or large uncategorized items.
+2. Exact reviewed date/time window.
+3. Total reviewed-period spend and category breakdown, using the spend breakdown rules above.
+4. Excluded non-spend total or notable skipped transactions when relevant.
+5. Transactions confidently categorizable, grouped by proposed category.
+6. Ambiguous transactions needing the user.
+7. Any suspicious duplicates, reversals, or large uncategorized items.
 
 Keep it short. Ask clarification only for transactions where the answer changes downstream reporting.
