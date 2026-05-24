@@ -5,7 +5,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createRequire } from 'node:module'
 
-const DEFAULT_DASHBOARD_DIR = '~/Programming/exampleco-reporting/apps/dashboard'
+const DEFAULT_DASHBOARD_DIR = '/Users/you/Programming/example-company-reporting/apps/dashboard'
 
 function loadEnvFile(filePath) {
   if (!fs.existsSync(filePath)) return
