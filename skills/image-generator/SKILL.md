@@ -36,14 +36,14 @@ By default images save to `./generated/` relative to cwd. Override with `--out <
 cd ~/.claude/skills/image-generator && npx tsx generate-image.ts \
   "moody dark SaaS hero banner, abstract gradient mesh" \
   --ratio wide --res 2K \
-  --out ~/Programming/personal-master/personal/artifacts/image-generator \
+  --out /Users/you/Programming/personal-master/personal/artifacts/image-generator \
   --name hero
 
 # Force Gemini for unsupported ratio
 cd ~/.claude/skills/image-generator && npx tsx generate-image.ts \
   "portrait photo style headshot" \
   --ratio 3:4 --provider gemini \
-  --out ~/Programming/personal-master/personal/artifacts/image-generator
+  --out /Users/you/Programming/personal-master/personal/artifacts/image-generator
 
 # Edit a reference image
 cd ~/.claude/skills/image-generator && npx tsx generate-image.ts \
