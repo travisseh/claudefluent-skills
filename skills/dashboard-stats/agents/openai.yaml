@@ -1,0 +1,3 @@
+display_name: Dashboard Stats
+short_description: Pull Example Company Reporting dashboard data locally.
+default_prompt: Query the Example Company Reporting dashboard stats locally and summarize the relevant metrics.
