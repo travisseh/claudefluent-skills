@@ -1,11 +1,11 @@
 ---
 name: meta-ads
-description: Use when the user asks to query, analyze, debug, or report on ExampleCo Meta/Facebook/Instagram ads, ad creatives, ad previews, campaign performance, leads, CPL, spend, messaging, or Meta Marketing API access.
+description: Use when the user asks to query, analyze, debug, or report on Example Company Meta/Facebook/Instagram ads, ad creatives, ad previews, campaign performance, leads, CPL, spend, messaging, or Meta Marketing API access.
 ---
 
 # Meta Ads
 
-Use this skill for ExampleCo Meta Ads questions and implementation work. Prefer the Meta Marketing API directly over the Meta Ads CLI unless the user specifically asks for CLI exploration.
+Use this skill for Example Company Meta Ads questions and implementation work. Prefer the Meta Marketing API directly over the Meta Ads CLI unless the user specifically asks for CLI exploration.
 
 ## Required Environment
 
@@ -46,10 +46,10 @@ Do not sum all lead-like action aliases together; Meta often returns multiple al
 Use the helper script when possible:
 
 ```bash
-python ~/.codex/skills/meta-ads/scripts/meta_ads_query.py insights --limit 100
-python ~/.codex/skills/meta-ads/scripts/meta_ads_query.py ads --limit 25
-python ~/.codex/skills/meta-ads/scripts/meta_ads_query.py preview AD_ID
-python ~/.codex/skills/meta-ads/scripts/meta_ads_query.py video VIDEO_ID
+python /Users/you/.codex/skills/meta-ads/scripts/meta_ads_query.py insights --limit 100
+python /Users/you/.codex/skills/meta-ads/scripts/meta_ads_query.py ads --limit 25
+python /Users/you/.codex/skills/meta-ads/scripts/meta_ads_query.py preview AD_ID
+python /Users/you/.codex/skills/meta-ads/scripts/meta_ads_query.py video VIDEO_ID
 ```
 
 Raw Graph API equivalents:
@@ -85,14 +85,14 @@ Video source may fail with `(#10) Application does not have permission for this 
 
 When asked “what messaging is working,” group ads by a mix of ad name, campaign/adset, headline, and primary text.
 
-Useful ExampleCo theme buckets:
+Useful Example Company theme buckets:
 - Empty seats / fill tables
 - Repeat visits / loyalty
 - Pizza operator angle
 - Social proof / testimonials
 - Delivery app cost reduction
 - Fast setup
-- General restaurant growth
+- General business growth
 
 Sort themes by CPL when leads exist. Also call out spend concentration so low-CPL tiny tests do not get overinterpreted.
 
@@ -107,10 +107,10 @@ For Next.js/Vercel:
 - Use Meta ad preview iframe for actual video/ad viewing when possible.
 - Never expose `META_ACCESS_TOKEN` client-side.
 
-For ExampleCo Reporting, current Product dashboard files are:
-- `~/.codex/worktrees/5f81/exampleco-reporting/apps/dashboard/src/lib/product-meta.ts`
-- `~/.codex/worktrees/5f81/exampleco-reporting/apps/dashboard/src/components/product-dashboard/product-dashboard.tsx`
-- `~/.codex/worktrees/5f81/exampleco-reporting/apps/dashboard/src/app/product/page.tsx`
+For Example Company Reporting, current Product dashboard files are:
+- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/lib/product-meta.ts`
+- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/components/product-dashboard/product-dashboard.tsx`
+- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/app/product/page.tsx`
 
 ## Security
 

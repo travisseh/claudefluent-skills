@@ -82,7 +82,7 @@ def video(args: argparse.Namespace) -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Query ExampleCo Meta Ads via Graph API.")
+    parser = argparse.ArgumentParser(description="Query Example Company Meta Ads via Graph API.")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     insights_parser = subparsers.add_parser("insights")
