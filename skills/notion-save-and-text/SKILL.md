@@ -17,7 +17,7 @@ Use this skill to combine two existing workflows:
    - If the target content is ambiguous, ask a concise clarification before saving.
 
 2. Save to Notion.
-   - Follow `~/Programming/personal-master/personal/.agents/skills/notion-save/SKILL.md`.
+   - Follow `/Users/you/Programming/personal-master/personal/.agents/skills/notion-save/SKILL.md`.
    - Use `node ~/.config/notion-tools/notion-ai.js create`.
    - Pick sensible metadata from the content:
      - Personal admin or household finance: `Area=Life Admin`, `Initiative=Admin`, `Type=Analysis` or `Notes`.
@@ -25,7 +25,7 @@ Use this skill to combine two existing workflows:
    - Capture the returned Notion URL.
 
 3. Text the URL to the user.
-   - Follow `~/Programming/personal-master/personal/.agents/skills/imessage/SKILL.md`.
+   - Follow `/Users/you/Programming/personal-master/personal/.agents/skills/imessage/SKILL.md`.
    - Use the user's phone number from contacts when available.
    - Default known number: `+18014337874`.
    - Message format:
