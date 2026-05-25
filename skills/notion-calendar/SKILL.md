@@ -13,7 +13,7 @@ Sibling skills: `/notion-save` for AI Output Library (durable artifacts), `/noti
 
 - **Name:** Content Calendar
 - **ID:** `3507bf03-b771-8117-8c47-c70c0ab31112`
-- **URL:** https://www.notion.so/example-workspace/3507bf03b77181178c47c70c0ab31112
+- **URL:** https://www.notion.so/example-agency-design/3507bf03b77181178c47c70c0ab31112
 
 ## Schema
 
@@ -34,7 +34,7 @@ The full draft body goes in the **page content** (markdown), not in a property.
 
 ## Pillar ↔ LinkedIn mode mapping
 
-The Pillar values mirror the 3 LinkedIn content modes from `user-writing-style`:
+The Pillar values mirror the 3 LinkedIn content modes from `travisse-writing-style`:
 
 | LinkedIn mode | Pillar value |
 |---|---|
