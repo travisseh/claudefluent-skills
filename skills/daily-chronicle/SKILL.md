@@ -1,6 +1,6 @@
 ---
 name: daily-chronicle
-description: Build and save a chronological timeline of the user's day from calendar, Grain, AskElephant, Slack, sent Gmail, sent iMessage, Codex sessions, and Claude Code threads. Defaults to today but accepts dates and ranges like yesterday, 2026-05-21, last 3 days, this week, or May 20-21. Use when the user asks for a daily chronicle, day timeline, what happened today/yesterday, or to save a timeline of his work/meetings/messages/agent activity.
+description: Build and save a chronological timeline of the user's day from calendar, Grain, AskElephant, Slack, sent Gmail, sent iMessage, Codex sessions, and Claude Code threads. Defaults to yesterday for recurring automation runs, but accepts dates and ranges like today, yesterday, 2026-05-21, last 3 days, this week, or May 20-21. Use when the user asks for a daily chronicle, day timeline, what happened today/yesterday, or to save a timeline of his work/meetings/messages/agent activity.
 ---
 
 # Daily Chronicle
@@ -9,7 +9,9 @@ Create a chronological record of the user's day and save it to the Notion AI Out
 
 ## Date Window
 
-Default to **today** in `America/Denver` unless the user gives a date or range.
+Default to **yesterday** in `America/Denver` unless the user gives a date or range.
+
+For recurring automation runs, "Daily Chronicle" means a complete chronicle of the previous local day, not a partial same-morning snapshot. Only use **today** when the user explicitly asks for today, says "so far today," or gives a same-day date.
 
 Accept:
 
@@ -45,7 +47,7 @@ Use the local Calendar CLI, not Calendar MCP, unless explicitly requested.
 Check calendars across:
 
 - `personal`
-- `boostly`
+- `example-company`
 - `example-agency`
 - `gmr`
 
@@ -102,7 +104,7 @@ node ~/.config/slack-tools/slack.js search <workspace> 'from:travisse after:YYYY
 
 Configured workspaces commonly include:
 
-- `boostly`
+- `example-company`
 - `gmr`
 - `claudefluent`
 - `example-agency`
@@ -120,7 +122,7 @@ Ignore bot noise unless it represents a failed or successful automation the user
 Use the local Gmail CLI. Check sent mail for:
 
 - `personal`
-- `boostly`
+- `example-company`
 - `example-agency`
 - `gmr`
 
