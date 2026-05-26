@@ -1,6 +1,6 @@
 ---
 name: phone-caller
-description: "Make outbound AI phone calls via Bland.ai to schedule appointments, get quotes, or handle business calls on Travisse's behalf. Use when he asks to 'call this place', 'schedule an appointment', 'get a quote from', 'phone call', or wants to contact a business by phone. Also trigger when texting a business didn't get a response and a call is needed."
+description: "Make outbound AI phone calls via Bland.ai to schedule appointments, get quotes, or handle business calls on the user's behalf. Use when he asks to 'call this place', 'schedule an appointment', 'get a quote from', 'phone call', or wants to contact a business by phone. Also trigger when texting a business didn't get a response and a call is needed."
 ---
 
 # Phone Caller
@@ -17,7 +17,7 @@ Make outbound AI phone calls using Bland.ai. The AI agent calls the business, ha
 ### 1. Build the task prompt
 
 Write a natural language task that tells the AI caller:
-- Who it's calling on behalf of ("Travisse Hansen")
+- Who it's calling on behalf of ("the user")
 - What it needs (appointment, quote, availability check)
 - Key details (property address, what's broken, preferred times)
 - What info to collect (cost, availability, next steps)
@@ -27,7 +27,7 @@ Write a natural language task that tells the AI caller:
 ```bash
 bash .claude/skills/phone-caller/scripts/call.sh \
   "+18012850268" \
-  "You are calling on behalf of Travisse Hansen. He has a rental property at 1313 S 1540 E, Provo UT 84606 and needs a garage door repair. The garage door needs to be looked at. Ask about their availability this week or next, get a cost estimate for a service call, and confirm what information they need from the homeowner." \
+  "You are calling on behalf of the user. He has a rental property at 1313 S 1540 E, Example City B UT 84606 and needs a garage door repair. The garage door needs to be looked at. Ask about their availability this week or next, get a cost estimate for a service call, and confirm what information they need from the homeowner." \
   "josh" \
   10
 ```
@@ -53,19 +53,19 @@ The script polls until the call completes and returns:
 ### Schedule a repair
 ```bash
 bash .claude/skills/phone-caller/scripts/call.sh "+18015551234" \
-  "You are calling on behalf of Travisse Hansen to schedule a garage door repair at 1313 S 1540 E, Provo UT. Ask about availability this week, cost for a service call, and what they need from the homeowner."
+  "You are calling on behalf of the user to schedule a garage door repair at 1313 S 1540 E, Example City B UT. Ask about availability this week, cost for a service call, and what they need from the homeowner."
 ```
 
 ### Get a cleaning quote
 ```bash
 bash .claude/skills/phone-caller/scripts/call.sh "+18015551234" \
-  "You are calling on behalf of Travisse Hansen to get a quote for carpet cleaning at a 4 bedroom house at 1313 S 1540 E, Provo UT 84606. Ask about pricing, availability, and how long the job typically takes."
+  "You are calling on behalf of the user to get a quote for carpet cleaning at a 4 bedroom house at 1313 S 1540 E, Example City B UT 84606. Ask about pricing, availability, and how long the job typically takes."
 ```
 
 ### General inquiry
 ```bash
 bash .claude/skills/phone-caller/scripts/call.sh "+18015551234" \
-  "You are calling on behalf of Travisse Hansen. [describe what you need]. Be polite and professional. Get their availability and pricing."
+  "You are calling on behalf of the user. [describe what you need]. Be polite and professional. Get their availability and pricing."
 ```
 
 ## Pricing
@@ -74,7 +74,7 @@ Bland.ai free tier: $0.14/min, 100 calls/day. A typical 3-5 minute business call
 
 ## After the call
 
-- Present the summary and transcript to Travisse
+- Present the summary and transcript to the user
 - If an appointment was scheduled, add it to the appropriate calendar
 - If a follow-up is needed, note the next steps
-- Send Travisse an iMessage summary if he's not actively in the conversation
+- Send the user an iMessage summary if he's not actively in the conversation
