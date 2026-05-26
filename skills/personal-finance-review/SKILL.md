@@ -20,13 +20,13 @@ Default convention for this user:
 3. Run the bundled parser:
 
 ```bash
-python3 ~/.codex/skills/personal-finance-review/scripts/analyze_chase_csv.py
+python3 /Users/you/.codex/skills/personal-finance-review/scripts/analyze_chase_csv.py
 ```
 
 You can also pass a specific file:
 
 ```bash
-python3 ~/.codex/skills/personal-finance-review/scripts/analyze_chase_csv.py ~/Downloads/Chase....CSV
+python3 /Users/you/.codex/skills/personal-finance-review/scripts/analyze_chase_csv.py /Users/you/Downloads/Chase....CSV
 ```
 
 4. If the user asks whether `Walmart` is really groceries vs discretionary shopping, inspect `https://www.walmart.com/orders` in the logged-in browser session and sample recent and larger orders.

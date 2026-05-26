@@ -32,7 +32,7 @@ MERCHANT_RULES = [
     (r"^CHARLES TYRWHITT", "Charles Tyrwhitt"),
     (r"^SP VUORI", "Vuori"),
     (r"^SP EVEREVE", "Evereve"),
-    (r"^LEHI CITY CORPORATION", "Lehi City"),
+    (r"^LEHI CITY CORPORATION", "Example City A City"),
     (r"^BANFIELD", "Banfield"),
     (r"^WASATCH BROADBAND", "Wasatch Broadband"),
     (r"^NETFLIX", "Netflix"),
