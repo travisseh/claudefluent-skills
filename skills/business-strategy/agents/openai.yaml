@@ -1,0 +1,7 @@
+interface:
+  display_name: "Business Strategy"
+  short_description: "Evaluate roadmap, GTM, and operating bets"
+  default_prompt: "Use $business-strategy to evaluate this business strategy decision and recommend the next move."
+
+policy:
+  allow_implicit_invocation: true
