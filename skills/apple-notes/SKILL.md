@@ -1,12 +1,12 @@
 ---
 name: apple-notes
-description: Work with Travisse's Apple Notes - search, read, and reference personal notes. Use when accessing, searching, or referencing Apple Notes content.
+description: Work with the user's Apple Notes - search, read, and reference personal notes. Use when accessing, searching, or referencing Apple Notes content.
 allowed-tools: Bash
 ---
 
 # Apple Notes Skill
 
-Access Travisse's Apple Notes via local script at `~/.claude/tools/apple-notes.py`
+Access the user's Apple Notes via local script at `~/.claude/tools/apple-notes.py`
 
 ## Commands
 
@@ -25,7 +25,17 @@ python3 ~/.claude/tools/apple-notes.py prepend "Note Title" "text to add"
 
 # Append text to end of a note (by title)
 python3 ~/.claude/tools/apple-notes.py append "Note Title" "text to add"
+
+# Replace the full body of a note (by title); use to repair bad formatting
+python3 ~/.claude/tools/apple-notes.py set "Note Title" "full note body"
 ```
+
+## Formatting
+
+- `append`, `prepend`, and `set` accept plain text and convert line breaks into Apple Notes HTML.
+- Use blank lines between sections and `- ` for bullets; the tool converts those bullets to rendered bullet lines in Notes.
+- If a previous write flattened a note into one paragraph, use `set` with the cleaned full body instead of appending more text.
+- Verify formatting with `read`; it now reads the rendered Notes body rather than the lossy SQLite blob.
 
 ## Key Notes
 
@@ -34,18 +44,18 @@ python3 ~/.claude/tools/apple-notes.py append "Note Title" "text to add"
 | ClaudeFluent Next Up | 9302 | ClaudeFluent task list and workload planning |
 | Change Log | 6074 | Retrospectives using "What happened / Counterfactual / Core Problem" framework |
 | 2026 GOALS | 5898 | Current year goals |
-| Conference, April 2025 | 8279 | Bishopric, Example Company strategy, spiritual goals |
+| Conference, April 2025 | 8279 | Leadership, Example Company strategy, spiritual goals |
 
 ## When to Use
 
-- Travisse asks about patterns/lessons → `read 6074` (Change Log)
-- Travisse asks to search notes → `search "keyword"`
-- Travisse wants to reference a note → `read <id>`
+- the user asks about patterns/lessons → `read 6074` (Change Log)
+- the user asks to search notes → `search "keyword"`
+- the user wants to reference a note → `read <id>`
 - Add tasks to ClaudeFluent workload → `prepend "ClaudeFluent Next Up" "task here"`
 
 ## Context
 
-Travisse uses Apple Notes for:
+the user uses Apple Notes for:
 - Personal reflection and journaling (Change Log)
 - Work retrospectives
 - Conference/church notes
