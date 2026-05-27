@@ -31,14 +31,14 @@ Each cron gets its own subfolder. The `run.sh` is always the entry point.
 # <Description of what this cron does>
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="~/Programming/personal-master/personal"
+PROJECT_DIR="/Users/you/Programming/personal-master/personal"
 OUTPUT_FILE="/tmp/<cron-name>-$(date +%Y-%m-%d).txt"
 LOG_FILE="/tmp/<cron-name>.log"
 
 echo "$(date): Starting <cron-name>" >> "$LOG_FILE"
 
-export PATH="/opt/homebrew/bin:~/.nvm/versions/node/v22.17.0/bin:$PATH"
-export HOME="~"
+export PATH="/opt/homebrew/bin:/Users/you/.nvm/versions/node/v22.17.0/bin:$PATH"
+export HOME="/Users/you"
 unset CLAUDECODE 2>/dev/null || true
 
 cd "$PROJECT_DIR"
@@ -84,7 +84,7 @@ find /tmp -name "<cron-name>-raw.txt" -mtime +1 -delete 2>/dev/null || true
 
 ## Email Delivery Script Template
 
-If delivering via email using the example.com Gmail service account:
+If delivering via email using the example-agency.com Gmail service account:
 
 ```typescript
 import { google } from 'googleapis';
@@ -154,7 +154,7 @@ Create a plist in `~/Library/LaunchAgents/`:
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>~/Programming/personal-master/personal/.claude/plugins/<plugin-name>/crons/<cron-name>/run.sh</string>
+        <string>/Users/you/Programming/personal-master/personal/.claude/plugins/<plugin-name>/crons/<cron-name>/run.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -170,9 +170,9 @@ Create a plist in `~/Library/LaunchAgents/`:
     <key>EnvironmentVariables</key>
     <dict>
         <key>HOME</key>
-        <string>~</string>
+        <string>/Users/you</string>
         <key>PATH</key>
-        <string>/opt/homebrew/bin:~/.nvm/versions/node/v22.17.0/bin:/usr/local/bin:/usr/bin:/bin</string>
+        <string>/opt/homebrew/bin:/Users/you/.nvm/versions/node/v22.17.0/bin:/usr/local/bin:/usr/bin:/bin</string>
     </dict>
 </dict>
 </plist>
