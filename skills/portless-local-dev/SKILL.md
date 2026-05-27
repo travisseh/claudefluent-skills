@@ -23,13 +23,13 @@ PORTLESS=0 npm run dev
 
 ## Common Apps
 
-- ExampleCo app: `~/Programming/exampleco` -> `https://exampleco.localhost`
-- ExampleCo website: `~/Programming/exampleco-website-v2` -> `https://exampleco-website.localhost`
-- Product2 risk dashboard: `~/Programming/product2/public/apps/exampleco-risk-dashboard` -> `https://exampleco-risk-dashboard.localhost`
-- Product Analytics: `~/Programming/product2/public/apps/tapcards-dashboard` -> `https://product-analytics.localhost`
-- Product2 Figma plugin: `~/Programming/product2/shared/apps/brand-extractor-figma` -> `https://exampleco-figma-plugin.localhost`
-- Product2 Figma plugin v2: `~/Programming/product2/shared/apps/brand-extractor-figma-codex-v2` -> `https://exampleco-figma-plugin-v2.localhost`
-- ClaudeFluent website: `~/Programming/personal-master/personal/claude_course/website` -> `https://claudefluent.localhost`
+- product app: `/Users/you/Programming/example-company` -> `https://example-company.localhost`
+- Example Company website: `/Users/you/Programming/example-company-website-v2` -> `https://example-company-website.localhost`
+- Product2 risk dashboard: `/Users/you/Programming/product2/public/apps/example-company-risk-dashboard` -> `https://example-company-risk-dashboard.localhost`
+- Product Analytics: `/Users/you/Programming/product2/public/apps/tapcards-dashboard` -> `https://product-analytics.localhost`
+- Product2 Figma plugin: `/Users/you/Programming/product2/shared/apps/brand-extractor-figma` -> `https://example-company-figma-plugin.localhost`
+- Product2 Figma plugin v2: `/Users/you/Programming/product2/shared/apps/brand-extractor-figma-codex-v2` -> `https://example-company-figma-plugin-v2.localhost`
+- ClaudeFluent website: `/Users/you/Programming/personal-master/personal/claude_course/website` -> `https://claudefluent.localhost`
 
 ## Default Workflow
 
