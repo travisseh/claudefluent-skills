@@ -19,14 +19,14 @@ from pathlib import Path
 from urllib.error import HTTPError
 from urllib.request import Request, urlopen
 
-REPO_ROOT = Path("~/Programming/personal-master/personal")
-TRANSCRIPT_SCRIPT = Path("~/.codex/skills/youtube-transcript/scripts/fetch_youtube_transcript.py")
+REPO_ROOT = Path("/Users/you/Programming/personal-master/personal")
+TRANSCRIPT_SCRIPT = Path("/Users/you/.codex/skills/youtube-transcript/scripts/fetch_youtube_transcript.py")
 STATE_DIR = REPO_ROOT / ".claude/skills/podcast-transcripts/state"
 DB_ID_FILE = STATE_DIR / "db_id.txt"
 
 PARENT_PAGE_ID = "33c7bf03b77180609066e82319e28d7a"
 NOTION_VERSION = "2022-06-28"
-NOTION_TOKEN_JS = Path("~/.config/notion-tools/notion-ai.js")
+NOTION_TOKEN_JS = Path("/Users/you/.config/notion-tools/notion-ai.js")
 
 CHANNELS = {
     "Lenny's Podcast": "https://www.youtube.com/@LennysPodcast/videos",

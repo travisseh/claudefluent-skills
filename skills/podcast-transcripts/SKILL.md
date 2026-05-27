@@ -52,7 +52,7 @@ python3 .claude/skills/podcast-transcripts/scripts/podcast_monitor.py --skip-tra
 Transcripts are stored as page content (paragraph blocks).
 
 ## Cron
-Daily at 9:00 AM via launchd: `~/Library/LaunchAgents/com.user.podcast-monitor.plist`
+Daily at 9:00 AM via launchd: `~/Library/LaunchAgents/com.travisse.podcast-monitor.plist`
 
 ## Adding a new podcast
 Edit `CHANNELS` dict in `scripts/podcast_monitor.py`. Value is the YouTube channel videos URL.
