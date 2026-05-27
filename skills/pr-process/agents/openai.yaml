@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Process"
+  short_description: "Example Company pull request workflow"
+  default_prompt: "Use $pr-process to prepare or review a pull request for the product repo."
