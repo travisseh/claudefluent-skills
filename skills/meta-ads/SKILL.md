@@ -17,7 +17,13 @@ META_AD_ACCOUNT_ID=act_2766538970268735
 META_API_VERSION=v25.0
 ```
 
-For local commands, load from the current shell, `.env.local`, Vercel env, or ask the user for a fresh token if unavailable. If the user pasted a token into chat, treat it as a temporary development token and recommend rotation before production.
+Known local credential source:
+
+```bash
+/Users/you/Programming/example-company-reporting/apps/dashboard/.env.local
+```
+
+For local commands, first load from `/Users/you/Programming/example-company-reporting/apps/dashboard/.env.local` using a dotenv-aware loader or parser. Do not `source` it directly unless all values are shell-escaped. If unavailable, load from the current shell, another `.env.local`, Vercel env, or ask the user for a fresh token. If the user pasted a token into chat, treat it as a temporary development token and recommend rotation before production.
 
 ## Default Analysis Window
 
@@ -96,21 +102,12 @@ Useful Example Company theme buckets:
 
 Sort themes by CPL when leads exist. Also call out spend concentration so low-CPL tiny tests do not get overinterpreted.
 
-## Dashboard Implementation Notes
+## Dashboard Safety
 
-For Next.js/Vercel:
+If wiring Meta Ads into an app:
 - Fetch Meta server-side only.
-- Cache normalized performance data with `unstable_cache` or route caching, usually 30 minutes.
-- Do not store media locally.
-- Store only URLs/preview iframe sources in memory/cache.
-- Render images from Meta CDN dynamically.
-- Use Meta ad preview iframe for actual video/ad viewing when possible.
+- Store credentials in environment variables, not source code.
 - Never expose `META_ACCESS_TOKEN` client-side.
-
-For Example Company Reporting, current Product dashboard files are:
-- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/lib/product-meta.ts`
-- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/components/product-dashboard/product-dashboard.tsx`
-- `/Users/you/.codex/worktrees/5f81/example-company-reporting/apps/dashboard/src/app/product/page.tsx`
 
 ## Security
 
