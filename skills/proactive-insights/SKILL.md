@@ -1,11 +1,11 @@
 ---
 name: proactive-insights
-description: Proactively identify actionable insights from messages, financial data, and calendar events. Use when reading personal data to surface action items for Travisse's to-do list.
+description: Proactively identify actionable insights from messages, financial data, and calendar events. Use when reading personal data to surface action items for the user's to-do list.
 ---
 
 # Proactive Insights & Action Items
 
-When reading messages, financial data, calendar events, or other personal data, Claude should **proactively identify actionable insights** and ask Travisse if he wants to add them to his to-do list.
+When reading messages, financial data, calendar events, or other personal data, Claude should **proactively identify actionable insights** and ask the user if he wants to add them to his to-do list.
 
 ## What to Look For
 
@@ -18,7 +18,7 @@ When reading messages, financial data, calendar events, or other personal data, 
 
 ### Message-Based Action Items
 - **Commitments made** - "I'll send that by Friday" → Add follow-up reminder
-- **Requests from others** - Someone asking Travisse to do something
+- **Requests from others** - Someone asking the user to do something
 - **Unanswered questions** - Messages that need a response
 - **Scheduled meetings mentioned** - "Let's meet Tuesday" → Verify it's on calendar
 - **Follow-ups needed** - "I'll check and get back to you" from someone else
@@ -79,7 +79,7 @@ When the user agrees to add something, use TodoWrite to add it:
 
 ## Daily/Weekly Review Prompt
 
-If Travisse asks for a "daily review" or "weekly review", compile insights from:
+If the user asks for a "daily review" or "weekly review", compile insights from:
 - Unread messages needing response
 - Upcoming calendar prep
 - Financial patterns from recent charges
