@@ -1,0 +1,262 @@
+# Quo API Expertise
+# Durable facts about the Quo (formerly OpenPhone) API.
+# Updated via /quo:self-improve.
+
+api:
+  base_url: https://api.openphone.com/v1
+  auth_header: Authorization  # raw API key, no Bearer prefix
+  rate_limit: 10  # requests per second
+  pagination: cursor  # pageToken/nextPageToken, max 100 per page
+  total_items_reliable: false  # known bug since v1.1.2
+
+id_prefixes:
+  phone_number: "PN"
+  call: "AC"
+  message: "AC"  # same prefix as calls — distinguish by context/endpoint
+  user: "US"
+  recording: "CR"
+  conversation: "CN"
+
+cloudflare:
+  user_agent_required: true  # default Python urllib agent is blocked (Error 1010)
+
+plan_restrictions:
+  all_plans:
+    - call recordings
+    - call metadata
+    - messages (SMS text content, direction, status)
+    - phone numbers
+    - users
+    - contacts
+    - webhooks (calls, messages)
+  business_and_scale:
+    - call transcripts (speaker-labeled, time-coded)
+    - call summaries (AI-generated)
+  scale_only:
+    - AI action items
+
+recording:
+  format: audio/mpeg  # MP3
+  url_behavior: possibly_signed  # download promptly, may expire
+  statuses: [absent, completed, deleted, failed, in-progress, paused, processing, stopped, stopping]
+
+transcript:
+  fields: [content, start, end, identifier, userId]
+  identifier_is: phone_number  # E.164 format
+  userId_is: workspace_user  # null for external callers
+  statuses: [absent, in-progress, completed, failed]
+
+calls_endpoint:
+  participants_required: true  # E.164 array, limited to 1 item
+  participants_encoding: "participants[]=+1..."  # array bracket syntax
+  date_params_require_time: true  # must be full ISO 8601 datetime, not date-only
+
+messages_endpoint:
+  list:
+    method: GET
+    path: /v1/messages
+    required_params: [phoneNumberId, participants, maxResults]
+    optional_params: [userId, createdAfter, createdBefore, pageToken]
+    participants_required: true  # same pattern as calls — E.164 array
+    date_params_require_time: true  # full ISO 8601 datetime
+  get_by_id:
+    method: GET
+    path: /v1/messages/{id}
+  send:
+    method: POST
+    path: /v1/messages
+    body: { content: "text (1-1600 chars)", from: "PN... or E.164", to: ["E.164"] }  # to limited to 1 recipient; response returns 202 not 200
+    optional_body: [userId, setInboxStatus]
+  object_fields: [id, to, from, text, phoneNumberId, direction, userId, status, createdAt, updatedAt]  # NB: send uses 'content' in request body, but response/list returns 'text'
+  direction_values: [incoming, outgoing]
+  status_values: [queued, sent, delivered, undelivered]
+  id_prefix: "AC"  # same as calls — disambiguate by endpoint context
+
+message_webhooks:
+  create:
+    method: POST
+    path: /v1/webhooks/messages
+    body: { events: ["message.received", "message.delivered"], url: "https://..." }
+    optional_body: [label, resourceIds, status, userId]
+  event_types: [message.received, message.delivered]
+
+enumeration_order:
+  steps:
+    - list conversations (GET /v1/conversations) — discovers phoneNumberId + participants
+    - list calls per conversation (GET /v1/calls?phoneNumberId=PNxxx&participants[]=+1...)
+    - list messages per conversation (GET /v1/messages?phoneNumberId=PNxxx&participants[]=+1...)
+    - fetch per-call data (recordings, transcript, summary)
+  note: "Cannot list all calls/messages for a phone number without knowing participants. Use conversations endpoint first."
+
+workspace:
+  # Objective data from profile-workspace.py on 2026-03-06, enriched with interview context.
+  # This section records IMMUTABLE HISTORICAL FACTS — what the API shows, not current org state.
+  profiled_at: "2026-03-06"
+  sample_size: 50
+  total_phone_lines: 41
+  total_conversations: 11154
+  total_workspace_users: 10  # as of profiling date
+  eras:
+    sms_only: { start: "2022-04", end: "2024-11", note: "Outbound Notifications line only, SMS blasts" }
+    early_calls: { start: "2024-12", end: "2025-07", note: "Ella Van Horn + Phone Integration lines appear, first recordings ~2024-10" }
+    modern: { start: "2025-08", end: "present", note: "Individual person-named lines created in bulk Aug 2025" }
+  recording_history: >
+    CEO reports recordings were enabled from ~2024. Account change in Q2-Q3 2025
+    (likely plan upgrade) may have caused historical recordings to become inaccessible.
+    Many lines had recording toggled off over time; sysadmin bulk-fixed this early March 2026.
+    Lines with recording start dates of March 2026 reflect this fix, not actual first recording.
+
+phone_lines:
+  # OBJECTIVE DATA from API profiling. No role/status guesses — those change.
+  # rec/trans reflect what the API returned on 2026-03-06. Sorted by conversation count.
+  # Full details: .agents/artifacts/knowledge/quo-workspace-profile.json
+  - { id: PN6imrIIH4, name: "Kassidy Farrer", created: "2025-08-22", convos: 1495, calls: 1, rec: "none", trans: "no" }
+  - { id: PNbIPYfwok, name: "Ella Van Horn", created: "2024-12-02", convos: 1430, calls: 23, rec: "partial(2025-01-15+)", trans: "yes" }
+  - { id: PNuffvoiKf, name: "Outbound Notifications", created: "2022-04-13", convos: 1211, calls: 8, rec: "partial(2024-10-10+)", trans: "no" }
+  - { id: PNMC2DJrBj, name: "Trevor Jensen", created: "2025-08-20", convos: 809, calls: 7, rec: "partial(2025-10-30+)", trans: "yes" }
+  - { id: PNV8nDrsbl, name: "Shane's Open Phone", created: "2025-08-20", convos: 766, calls: 14, rec: "none", trans: "no" }
+  - { id: PNdZwvreE6, name: "All Texts", created: "2025-09-10", convos: 726, calls: 0, rec: "no_calls", trans: "no" }
+  - { id: PNM01piBUZ, name: "Example Company Support", created: "2025-08-20", convos: 624, calls: 88, rec: "partial(2026-03-02+)", trans: "yes" }
+  - { id: PNI1wS7Nhi, name: "Dallas Williams", created: "2025-08-20", convos: 335, calls: 60, rec: "partial(2025-11-17+)", trans: "yes" }
+  - { id: PNTiOjldqG, name: "Chris Hubbard", created: "2025-08-20", convos: 322, calls: 37, rec: "partial(2025-09-03+)", trans: "yes" }
+  - { id: PNEQarTvUi, name: "Jillian Hatch", created: "2025-08-19", convos: 312, calls: 23, rec: "partial(2026-03-05+)", trans: "yes" }
+  - { id: PNzO5vuR60, name: "Cole Felis", created: "2025-08-25", convos: 299, calls: 12, rec: "none", trans: "no" }
+  - { id: PNvWEQxj2Y, name: "Vanessa Wright", created: "2025-08-20", convos: 241, calls: 62, rec: "partial(2026-01-21+)", trans: "yes" }
+  - { id: PNNxdHelY5, name: "Sterling Evans", created: "2025-08-25", convos: 238, calls: 50, rec: "partial(2026-03-03+)", trans: "yes" }
+  - { id: PN3uTmC9q5, name: "Mckay May", created: "2025-08-20", convos: 233, calls: 39, rec: "partial(2026-02-02+)", trans: "yes" }
+  - { id: PNUxao1kWC, name: "Kyle Baker", created: "2025-08-20", convos: 233, calls: 51, rec: "partial(2025-10-10+)", trans: "yes" }
+  - { id: PNtUnwj63c, name: "Tyler Price", created: "2025-09-04", convos: 225, calls: 50, rec: "partial(2026-03-04+)", trans: "yes" }
+  - { id: PNHnaS1jZ4, name: "Garrett Harris", created: "2025-08-20", convos: 191, calls: 52, rec: "none", trans: "no" }
+  - { id: PNAsXAO4Ja, name: "Kole Minnoch", created: "2025-08-27", convos: 184, calls: 29, rec: "none", trans: "no" }
+  - { id: PNBt03Ps1k, name: "Duke McFarland", created: "2025-09-29", convos: 182, calls: 143, rec: "partial(2026-01-12+)", trans: "yes" }
+  - { id: PNAZy69eas, name: "Mark Kim", created: "2025-08-20", convos: 172, calls: 222, rec: "partial(2025-09-25+)", trans: "yes" }
+  - { id: PNft3mbXTa, name: "Phone Integration", created: "2025-01-29", convos: 139, calls: 20, rec: "partial(2025-01-30+)", trans: "yes" }
+  - { id: PNoYZdkemV, name: "Jacob Merriman", created: "2025-10-14", convos: 125, calls: 18, rec: "none", trans: "no" }
+  - { id: PNWf4x2u9R, name: "Brixton Gardner", created: "2025-03-03", convos: 109, calls: 119, rec: "partial(2025-03-05+)", trans: "yes" }
+  - { id: PN6nuWblZT, name: "William Nuckolls", created: "2025-08-25", convos: 96, calls: 3, rec: "none", trans: "no" }
+  - { id: PNAVNuXLWH, name: "B-Money's Old Phone", created: "2025-08-20", convos: 93, calls: 52, rec: "none", trans: "no" }
+  - { id: PNIfL8s3jL, name: "Christian Carmicheal", created: "2025-08-25", convos: 80, calls: 27, rec: "none", trans: "no" }
+  - { id: PN91UcCY42, name: "Jackson Call", created: "2026-01-20", convos: 76, calls: 46, rec: "partial(2026-01-23+)", trans: "yes" }
+  - { id: PNqVRoqfnP, name: "Brianna Davis (Formerly Maddi)", created: "2025-08-20", convos: 65, calls: 49, rec: "none", trans: "no" }
+  - { id: PN9BfvfwwK, name: "Tyler Beagley", created: "2025-08-20", convos: 50, calls: 33, rec: "none", trans: "no" }
+  - { id: PN2PvCgitu, name: "Jonathan", created: "2026-02-03", convos: 27, calls: 34, rec: "partial(2026-03-02+)", trans: "yes" }
+  - { id: PNlq6i02AQ, name: "Halee Rogers", created: "2026-02-02", convos: 26, calls: 37, rec: "partial(2026-03-02+)", trans: "yes" }
+  - { id: PNc7a9qyjY, name: "Jesse Thayne", created: "2026-02-03", convos: 18, calls: 0, rec: "no_calls", trans: "no" }
+  - { id: PN55ijRNpg, name: "Marketing Support", created: "2026-01-22", convos: 7, calls: 3, rec: "none", trans: "no" }
+  - { id: PNdt2WvwDj, name: "Samuel Durkin", created: "2026-02-17", convos: 6, calls: 6, rec: "none", trans: "no" }
+  - { id: PNyIBR05LR, name: "Nick Powell", created: "2025-08-25", convos: 4, calls: 5, rec: "partial(2026-03-06+)", trans: "yes" }
+  - { id: PNhcqcNpFH, name: "Brandon Heath", created: "2026-02-03", convos: 3, calls: 6, rec: "none", trans: "no" }
+  - { id: PN2WLEUV4a, name: "Primary (Afton Erickson)", created: "2026-03-04", convos: 2, calls: 1, rec: "none", trans: "no" }
+  - { id: PNPRk5p6zQ, name: "Dylan Whitaker", created: "2026-03-06", convos: 0, calls: 0, rec: "no_calls", trans: "no" }
+  - { id: PN7JNnpQob, name: "Primary (Trevor Herrick)", created: "2026-03-04", convos: 0, calls: 0, rec: "no_calls", trans: "no" }
+  - { id: PNw6KAODZ4, name: "Primary", created: "2026-03-04", convos: 0, calls: 0, rec: "no_calls", trans: "no" }
+  - { id: PNiPAMVTWX, name: "Keegan Bigelow", created: "2025-08-25", convos: 0, calls: 0, rec: "no_calls", trans: "no" }
+
+known_context:
+  # Interview-sourced facts (2026-03-06). These are POINT-IN-TIME observations, not live state.
+  # Do NOT treat as current truth — verify against conversation/call data when it matters.
+  special_lines:
+    - "Outbound Notifications (PNuffvoiKf): SMS broadcast line, oldest line in workspace"
+    - "All Texts (PNdZwvreE6): utility line for testing customer text clubs, receiving POS auth codes (Competitor C)"
+    - "Example Company Support (PNM01piBUZ): shared support line, historically weekly support rotation"
+    - "Ella Van Horn (PNbIPYfwok): inbound leads line, historically shared before attributed to current user"
+    - "Phone Integration (PNft3mbXTa): product/service phone integration testing"
+    - "Shane's Open Phone (PNV8nDrsbl): CEO's line"
+  aliases:
+    - "B-Money's Old Phone AND Brianna Davis (Formerly Maddi) = same person (Brianna Davis)"
+  confirmed_departed:
+    - "Mckay May: departed support"
+    - "Trevor Jensen: departed Mar 2026 (was support then manager)"
+  interview_notes:
+    - "Mark Kim: handles onboarding calls (explains highest call volume at 222)"
+    - "Sales team trialing Kixi vendor for localized calling; some SDR lines inactive on Quo"
+    - "New hires Afton Erickson, Trevor Herrick, Dylan Whitaker are sales, temporarily on Quo"
+
+capabilities:
+  # OBJECTIVE: what data the API returned on 2026-03-06. Not what should exist — what does.
+  recordings:
+    lines_with_count: 20
+    lines_without_count: 15  # have calls but no recordings found in sample
+    coverage_window: { earliest: "2024-10-10", latest: "2026-03-06" }
+    total_sampled: 312  # out of 1430 calls (22%)
+    note: >
+      Partial coverage due to: (1) recording toggle was off on many lines until sysadmin
+      bulk-fixed it early March 2026, (2) recordings may have existed since 2024 but could
+      be inaccessible after account changes in Q2-Q3 2025.
+  transcripts:
+    requires: "recording"
+    total_sampled: 308
+    note: "Auto-generated for 99% of recorded calls. Business/Scale plan confirmed."
+  summaries:
+    requires: "recording"
+    total_sampled: 291
+    note: "AI-generated for 93% of recorded calls."
+  sms:
+    all_lines: true
+    earliest: "2022-04-13"
+  plan_tier: "Business or Scale (transcripts and summaries confirmed present)"
+  external_data:
+    ask_elephant: "Video meeting transcripts/recordings (separate plugin)"
+    hubspot: "May have synced Quo call recordings as MP4/WAV. Overlap investigation needed."
+    kixi: "Sales/SDR localized calling vendor. Data not in Quo."
+
+reasoning_shortcuts:
+  check_line_capabilities: >
+    Before searching for recordings/transcripts, check the phone_lines table
+    for that line's rec/trans value. If "none" or "no", skip the search.
+  api_vs_workspace: >
+    plan_restrictions = what the API supports per plan tier.
+    capabilities = what data actually exists in THIS workspace.
+    A feature can be API-supported but have no data if never enabled.
+  pre_august_2025: >
+    Before Aug 2025, only Outbound Notifications (2022), Ella Van Horn (2024-12),
+    Phone Integration (2025-01), and Brixton Gardner (2025-03) lines existed.
+    Most pre-2025 activity was SMS. Person-named lines were created in bulk Aug 2025.
+  recording_toggle_gap: >
+    Many lines had recording off until sysadmin bulk-fixed it in early March 2026.
+    A line showing recordings starting March 2026 reflects the fix, not first-ever call.
+    Historical recordings from 2024 may exist but be inaccessible due to account changes.
+  bmoney_alias: >
+    "B-Money's Old Phone" (PNAVNuXLWH) and "Brianna Davis (Formerly Maddi)" (PNqVRoqfnP)
+    are the SAME person. Two inactive personal lines.
+  scope_limitation: >
+    This mental model records what data exists, not who people are or what they do.
+    Roles and org structure change — infer from conversation/call context when needed.
+    For customer-level queries, use conversations + calls API with participant number.
+
+changelog:
+  - date: 2026-02-25
+    source: initial-research
+    changes:
+      - Bootstrapped from Quo API research findings
+      - Documented API fundamentals, ID prefixes, plan restrictions
+      - Documented recording format, transcript fields, enumeration order
+  - date: 2026-02-25
+    source: live-api-testing
+    changes:
+      - "CORRECTION: participants is required on /v1/calls (not optional as docs initially suggested)"
+      - "CORRECTION: date params require full ISO 8601 datetime, not date-only"
+      - Added conversations endpoint as primary discovery mechanism
+      - Added CN prefix for conversation IDs
+      - Cloudflare blocks default Python urllib User-Agent (Error 1010)
+      - certifi required for SSL on macOS Python
+  - date: 2026-03-03
+    source: ena-800-sms-research
+    changes:
+      - "DISCOVERY: /v1/messages endpoint exists — full SMS read/write/webhook support"
+      - "Confirmed via live API: GET /v1/messages returns text content, direction, status"
+      - "Messages use same AC prefix as calls — disambiguate by endpoint context"
+      - "Messages available on all plans (no tier restriction)"
+      - "Webhook events: message.received, message.delivered"
+      - "Send endpoint: POST /v1/messages (content, from, to)"
+      - "Same enumeration pattern as calls: conversations → messages (phoneNumberId + participants)"
+  - date: 2026-03-06
+    source: workspace-profiling
+    changes:
+      - "Profiled 41 phone lines, 11154 conversations, 1430 sampled calls via profile-workspace.py"
+      - "312/1430 sampled calls (22%) have recordings, 308 transcripts, 291 summaries"
+      - "20 lines with recordings, 15 with calls but none — partial coverage due to toggle oversight"
+      - "Recording toggle bulk-fixed by sysadmin early Mar 2026; historical recs from 2024 may be inaccessible"
+      - "Added workspace, phone_lines, known_context, capabilities, reasoning_shortcuts sections"
+      - "CORRECTION: enumeration_order was invalid YAML (mixed sequence/mapping) — restructured"
+      - "Design: mental model records immutable API-observable facts, not mutable org state"
