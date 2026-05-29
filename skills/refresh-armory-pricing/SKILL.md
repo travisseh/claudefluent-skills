@@ -1,6 +1,6 @@
 ---
 name: refresh-armory-pricing
-description: Update the ExampleCo Armory's pricing data by fetching from Stripe. Use when Stripe products/prices have changed and the armory needs to reflect current pricing. Trigger with '/refresh-pricing'.
+description: Update the Example Company Armory's pricing data by fetching from Stripe. Use when Stripe products/prices have changed and the armory needs to reflect current pricing. Trigger with '/refresh-pricing'.
 ---
 
 # Refresh Armory Pricing from Stripe
@@ -18,18 +18,18 @@ Use this skill to update the Armory's pricing data from Stripe.
 
 ### Step 1: Run the fetch script
 ```bash
-STRIPE_SECRET_KEY="sk_live_..." node ~/Programming/product2/public/apps/exampleco-armory/scripts/fetch-stripe-pricing.js
+STRIPE_SECRET_KEY="sk_live_..." node /Users/you/Programming/product2/public/apps/example-company-armory/scripts/fetch-stripe-pricing.js
 ```
 
 Or if the key is passed as argument:
 ```bash
-node ~/Programming/product2/public/apps/exampleco-armory/scripts/fetch-stripe-pricing.js "sk_live_..."
+node /Users/you/Programming/product2/public/apps/example-company-armory/scripts/fetch-stripe-pricing.js "sk_live_..."
 ```
 
 ### Step 2: Verify the update
 Check the generated JSON file:
 ```bash
-head -20 ~/Programming/product2/public/apps/exampleco-armory/data/stripe-pricing.json
+head -20 /Users/you/Programming/product2/public/apps/example-company-armory/data/stripe-pricing.json
 ```
 
 ### Step 3: Report results
@@ -42,8 +42,8 @@ Tell the user:
 The Stripe secret key should NOT be committed to git. The script reads from environment variable `STRIPE_SECRET_KEY` or accepts it as a command-line argument.
 
 ## Files
-- **Script**: `~/Programming/product2/public/apps/exampleco-armory/scripts/fetch-stripe-pricing.js`
-- **Output**: `~/Programming/product2/public/apps/exampleco-armory/data/stripe-pricing.json`
+- **Script**: `/Users/you/Programming/product2/public/apps/example-company-armory/scripts/fetch-stripe-pricing.js`
+- **Output**: `/Users/you/Programming/product2/public/apps/example-company-armory/data/stripe-pricing.json`
 
 ## Stripe Key Location
-The ExampleCo Stripe live key can be found in 1Password or the ExampleCo admin dashboard.
+The Example Company Stripe live key can be found in 1Password or the Example Company admin dashboard.
