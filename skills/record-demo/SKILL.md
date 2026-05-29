@@ -21,8 +21,8 @@ Do not use this for static screenshots or when no walkthrough is needed.
 Use the shared Tella helper script:
 
 ```bash
-npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts start
-npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts stop
+npx tsx /Users/you/Programming/personal-master/personal/scripts/tella-demo.ts start
+npx tsx /Users/you/Programming/personal-master/personal/scripts/tella-demo.ts stop
 ```
 
 `stop` returns the final Tella clip URL.
@@ -33,7 +33,7 @@ npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts stop
 2. Start Tella immediately before the walkthrough:
 
 ```bash
-npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts start
+npx tsx /Users/you/Programming/personal-master/personal/scripts/tella-demo.ts start
 ```
 
 3. Perform the real walkthrough step by step using normal tools:
@@ -45,7 +45,7 @@ npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts start
 4. Stop Tella immediately after the walkthrough:
 
 ```bash
-npx tsx ~/Programming/personal-master/personal/scripts/tella-demo.ts stop
+npx tsx /Users/you/Programming/personal-master/personal/scripts/tella-demo.ts stop
 ```
 
 5. Capture and return the Tella URL.
