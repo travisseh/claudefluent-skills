@@ -21,11 +21,11 @@ APIFY_ENDPOINT = (
     f"https://api.apify.com/v2/acts/{ACTOR}/run-sync-get-dataset-items"
 )
 ENV_FILE = Path(
-    "~/Programming/personal-master/"
+    "/Users/you/Programming/personal-master/"
     "personal/claude_course/website/.env.local"
 )
 WORKSPACE_ROOT = Path(
-    "~/Programming/personal-master/personal"
+    "/Users/you/Programming/personal-master/personal"
 )
 
 

@@ -54,10 +54,10 @@ If the topic clearly belongs to a niche, pass `--subreddit`. Results are dramati
 | Topic contains… | `--subreddit` |
 |---|---|
 | Claude Code, Cursor, Windsurf, Cline, AI coding agents | `ClaudeAI` (also try `ChatGPTCoding`, `cursor`, `singularity`) |
-| Restaurant marketing / ops / POS / small restaurant | `restaurateur` (also `smallbusiness`, `KitchenConfidential`) |
+| Restaurant marketing / ops / POS / small business | `restaurateur` (also `smallbusiness`, `KitchenConfidential`) |
 | SaaS product, pricing, PLG, activation | `SaaS` (also `startups`, `ProductManagement`) |
 | Landlord / tenant / rental property | `Landlord` (also `RealEstate`, `realestateinvesting`) |
-| LDS / Mormon / bishopric / ward | `latterdaysaints` |
+| LDS / Mormon / leadership / organization | `latterdaysaints` |
 | Course creator, info product, online education | `juststart` (also `Entrepreneur`) |
 | Parenting, newborn, baby sleep | `NewParents` (also `beyondthebump`, `daddit`) |
 
@@ -83,7 +83,7 @@ If a run returns posts that are clearly off-topic (memes, tangential keyword mat
 ## Usage
 
 ```bash
-cd ~/Programming/personal-master/personal
+cd /Users/you/Programming/personal-master/personal
 
 # Default: relevance sort, past year, all subreddits
 python3 .claude/skills/reddit-search/scripts/search.py '"claude code"'
@@ -98,7 +98,7 @@ python3 .claude/skills/reddit-search/scripts/search.py "activation funnel" --sub
 python3 .claude/skills/reddit-search/scripts/search.py "tapcards" --sort new --time week --no-comments
 
 # All-time top threads on a rare topic
-python3 .claude/skills/reddit-search/scripts/search.py "bishopric burnout" --sort top --time all
+python3 .claude/skills/reddit-search/scripts/search.py "leadership burnout" --sort top --time all
 ```
 
 The script prints the report path as its last stdout line. Use the `Read` tool on that path to pull the markdown into context, then synthesize themes for the user rather than dumping the raw report.
