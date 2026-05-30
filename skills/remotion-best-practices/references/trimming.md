@@ -9,7 +9,7 @@ Use `<Sequence>` with a negative `from` value to trim the start of an animation.
 
 ## Trim the Beginning
 
-A negative `from` value shifts time backwards, making the animation start partway through:
+A negative `from` value shifts time backorganizations, making the animation start partway through:
 
 ```tsx
 import { Sequence, useVideoConfig } from "remotion";
