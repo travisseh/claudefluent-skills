@@ -8,7 +8,7 @@ import urllib.request
 from datetime import datetime, timedelta, timezone
 
 API_BASE = "https://api.render.com/v1"
-REPORTING_REPO = "https://github.com/ExampleCo/exampleco-reporting"
+REPORTING_REPO = "https://github.com/example-org/example-company-reporting"
 REPORTING_OWNER_ID = os.environ.get("RENDER_REPORTING_OWNER_ID", "tea-cbfgtpl0malclpe38gu0")
 
 
@@ -93,7 +93,7 @@ def assert_reporting_service(service_id):
 
     if repo != REPORTING_REPO or owner_id != REPORTING_OWNER_ID or root_dir != "apps/dashboard":
         raise SystemExit(
-            "Refusing Render write: target is not the ExampleCo Reporting service. "
+            "Refusing Render write: target is not the Example Company Reporting service. "
             f"service_id={service_id} name={name!r} repo={repo!r} owner_id={owner_id!r} root_dir={root_dir!r}"
         )
 
@@ -188,7 +188,7 @@ def parse_args():
     logs.add_argument("--minutes", type=int, default=60)
     logs.add_argument("--start")
     logs.add_argument("--end")
-    logs.add_argument("--direction", default="backward", choices=["backward", "forward"])
+    logs.add_argument("--direction", default="backorganization", choices=["backorganization", "fororganization"])
     logs.add_argument("--level")
     logs.add_argument("--type")
     logs.add_argument("--status")

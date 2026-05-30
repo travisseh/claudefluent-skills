@@ -1,19 +1,19 @@
 ---
 name: render-readonly
-description: Reporting-only Render operations for inspecting and maintaining the ExampleCo Reporting Render project. Use when the user asks about Render deploys, Render logs, Render service status, production deploy investigation, Render API inspection, or Reporting cron environment variables.
+description: Reporting-only Render operations for inspecting and maintaining the Example Company Reporting Render project. Use when the user asks about Render deploys, Render logs, Render service status, production deploy investigation, Render API inspection, or Reporting cron environment variables.
 ---
 
 # Render Reporting
 
-Use this skill for Render observability, deploy investigation, and narrowly scoped maintenance of the ExampleCo Reporting Render project.
+Use this skill for Render observability, deploy investigation, and narrowly scoped maintenance of the Example Company Reporting Render project.
 
 This skill is no longer globally read-only. It is **Reporting-only**:
 
-- Allowed target repo: `https://github.com/ExampleCo/exampleco-reporting`
-- Allowed owner/team: `ExampleCo`
+- Allowed target repo: `https://github.com/example-org/example-company-reporting`
+- Allowed owner/team: `Example Company`
 - Allowed service family: Reporting services/cron jobs for this repo, currently `cron - sales call reporting`
 - Do not create, update, restart, scale, suspend, delete, or mutate any non-Reporting Render resource.
-- Do not update env vars on shared ExampleCo app services, staging services, customer-facing services, or unrelated cron jobs.
+- Do not update env vars on shared product app services, staging services, customer-facing services, or unrelated cron jobs.
 
 ## Setup
 
@@ -46,7 +46,7 @@ Run from any directory:
 ```bash
 python3 ~/.codex/skills/render-readonly/scripts/render_read.py owners
 python3 ~/.codex/skills/render-readonly/scripts/render_read.py services
-python3 ~/.codex/skills/render-readonly/scripts/render_read.py services --name exampleco
+python3 ~/.codex/skills/render-readonly/scripts/render_read.py services --name example-company
 python3 ~/.codex/skills/render-readonly/scripts/render_read.py service <serviceId>
 python3 ~/.codex/skills/render-readonly/scripts/render_read.py deploys <serviceId> --limit 10
 python3 ~/.codex/skills/render-readonly/scripts/render_read.py deploy <serviceId> <deployId>
@@ -63,7 +63,7 @@ python3 ~/.codex/skills/render-readonly/scripts/render_read.py set-env-var <serv
 4. Run `deploy <serviceId> <deployId>` for details on a suspicious deploy.
 5. Run `logs --owner <ownerId> --resource <serviceId> --minutes 30 --text <term>` for runtime or deploy errors.
 6. For Reporting cron env maintenance, run `service <serviceId>` first and confirm:
-   - `repo` is `https://github.com/ExampleCo/exampleco-reporting`
+   - `repo` is `https://github.com/example-org/example-company-reporting`
    - `rootDir` is `apps/dashboard`
    - service name is a Reporting service, currently `cron - sales call reporting`
 7. Run `env-vars <serviceId>` to inspect only variable names or redacted values.
@@ -73,7 +73,7 @@ python3 ~/.codex/skills/render-readonly/scripts/render_read.py set-env-var <serv
 
 The Reporting sales cron expects these env vars:
 
-- `SALES_DATABASE_URL` — primary V2 PostgreSQL connection string, not Supabase and not the read replica.
+- `SALES_DATABASE_URL` — primary production PostgreSQL connection string, not Supabase and not the read replica.
 - `ASKELEPHANT_API_KEY` — AskElephant REST API key.
 - `HUBSPOT_API_KEY` — HubSpot private app token for CRM matching.
 - `ANTHROPIC_API_KEY` — Anthropic key for transcript analysis.
@@ -94,7 +94,7 @@ The cron reads/writes these Reporting tables:
 
 - Only use bundled script commands unless the user explicitly asks for broader Render API work.
 - Write operations are allowed only for the Reporting service guardrails above.
-- Before any write operation, the script must fetch the service and verify it belongs to `ExampleCo/exampleco-reporting`.
+- Before any write operation, the script must fetch the service and verify it belongs to `example-org/example-company-reporting`.
 - Never call `POST`, `PATCH`, `PUT`, or `DELETE` Render endpoints for non-Reporting services.
 - Do not print API keys, env vars, connection strings, or secrets in the final answer.
 - Summarize findings with service/deploy IDs and timestamps, but redact sensitive values.
